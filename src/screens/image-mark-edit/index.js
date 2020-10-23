@@ -49,7 +49,7 @@ export default ({navigation, route}) => {
 
   const editImage = async () => {
     const imgUri = imgUris[imgIndex];
-    const imgText = `Hình ${imgIndex + 1}`;
+    const imgText = `Photo ${imgIndex + 1}`;
     const imgBase64 = await RNFS.readFile(imgUri, 'base64');
     webViewRef.current.injectJavaScript(
       `(function() {
@@ -74,7 +74,7 @@ export default ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <Header navigation={navigation} title="TẠO ẢNH" hasBack={false} />
+      <Header navigation={navigation} title="Generate Photo" hasBack={false} />
       <Progress.Circle
         size={150}
         progress={imgIndex / imgUris.length}
@@ -90,7 +90,9 @@ export default ({navigation, route}) => {
         containerStyle={styles.webView}
       />
       <Modal visible={successVisible}>
-        <Text style={styles.textSuccess}>Đã xong, vào Album để xem nhé</Text>
+        <Text style={styles.textSuccess}>
+          Done, please check watermarked photo in Album
+        </Text>
         <Button title="OK" onPress={handleSuccess} />
       </Modal>
     </View>

@@ -116,7 +116,11 @@ export default ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <Header navigation={navigation} title="CHỌN VỊ TRÍ" onNext={handleNext} />
+      <Header
+        navigation={navigation}
+        title="Adjust Position"
+        onNext={handleNext}
+      />
       <SliderWithText
         text="X Value"
         value={xPercent}
@@ -128,7 +132,7 @@ export default ({navigation, route}) => {
         onValueChange={setYPercent}
       />
       <SliderWithText
-        text="Cỡ chữ"
+        text="Font size"
         value={fontSize}
         onValueChange={setFontSize}
         minimumValue={10}

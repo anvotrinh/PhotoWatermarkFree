@@ -60,7 +60,7 @@ export default ({navigation, route}) => {
     return null;
   }
   const imgUri = imgUris[0];
-  const sampleText = 'Hình 1';
+  const sampleText = 'Photo 1';
 
   const [imageRatio, setImageRatio] = useState(0);
   const [xPercent, setXPercent] = useState(0.6);
@@ -110,7 +110,11 @@ export default ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <Header navigation={navigation} title="CHỌN VỊ TRÍ" onNext={handleNext} />
+      <Header
+        navigation={navigation}
+        title="Adjust Position"
+        onNext={handleNext}
+      />
       <SliderWithText
         text="X Value"
         value={xPercent}
@@ -122,7 +126,7 @@ export default ({navigation, route}) => {
         onValueChange={setYPercent}
       />
       <SliderWithText
-        text="Cỡ chữ"
+        text="Font size"
         value={fontSize}
         onValueChange={setFontSize}
         minimumValue={10}

@@ -37,17 +37,17 @@ export default ({navigation}) => {
     <View style={styles.container}>
       <Header
         navigation={navigation}
-        title="CHỌN HÌNH"
+        title="Choose Photo"
         onNext={handleNext}
         hasBack={false}
       />
       <CheckBox
-        title="Đánh số"
+        title="Mark number"
         checked={mode === 'mark'}
         onPress={() => setMode('mark')}
       />
       <CheckBox
-        title="Đánh giá tiền"
+        title="Mark price"
         checked={mode === 'price'}
         onPress={() => setMode('price')}
       />
@@ -55,7 +55,7 @@ export default ({navigation}) => {
         <Input
           value={price}
           onChangeText={setPrice}
-          placeholder="Giá"
+          placeholder="price"
           leftIcon={{type: 'ionicon', name: 'ios-pricetag'}}
           leftIconContainerStyle={{marginRight: 10}}
         />
