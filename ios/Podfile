@@ -8,6 +8,9 @@ target 'PhotoWatermarkFree' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+
+
   target 'PhotoWatermarkFreeTests' do
     inherit! :complete
     # Pods for testing
