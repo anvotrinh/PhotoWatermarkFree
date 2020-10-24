@@ -1,5 +1,11 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {
+  PermissionsAndroid,
+  Platform,
+  StyleSheet,
+  View,
+  Text,
+} from 'react-native';
 import {WebView} from 'react-native-webview';
 import RNFS from 'react-native-fs';
 import CameraRoll from '@react-native-community/cameraroll';
@@ -58,12 +64,25 @@ export default ({navigation, route}) => {
     );
   };
 
+  const hasAndroidPermission = async () => {
+    const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+    const hasPermission = await PermissionsAndroid.check(permission);
+    if (hasPermission) {
+      return true;
+    }
+    const status = await PermissionsAndroid.request(permission);
+    return status === 'granted';
+  };
+
   const handleMessage = async (e) => {
     const imgBase64 = e.nativeEvent.data;
     const imageData = imgBase64.split('data:image/png;base64,')[1];
     const imagePath = generateTempPath(`image_${imgIndex}.png`);
     await RNFS.writeFile(imagePath, imageData, 'base64');
-    await CameraRoll.saveToCameraRoll(imagePath, 'photo');
+    if (Platform.OS === 'android' && !(await hasAndroidPermission())) {
+      return;
+    }
+    await CameraRoll.save(imagePath, {type: 'photo'});
     setImgIndex(imgIndex + 1);
   };
 
