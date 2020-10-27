@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "467592484987",
+    "firebase_url": "https://photo-watermark-free.firebaseio.com",
+    "project_id": "photo-watermark-free",
+    "storage_bucket": "photo-watermark-free.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467592484987:android:a3260595f9ac868fc72ade",
+        "android_client_info": {
+          "package_name": "com.photowatermarkfree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467592484987-56h8lvlerfegicdgielq12etidomho47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9Y3nSIadVhNf5DgT95TB7UGidDoC4QNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467592484987-56h8lvlerfegicdgielq12etidomho47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
