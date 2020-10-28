@@ -1,7 +1,7 @@
 ## Photo Watermark Free
-```
-Add watermarks to your pictures. Put your property text or a logo image into your picture, adjust its size and position.
-```
+
+> Add watermarks to your pictures. Put your property text or a logo image into your picture, adjust its size and position.
+
 [Download Android App](https://play.google.com/store/apps/details?id=com.photowatermarkfree)
 
 [Download IOS App](https://play.google.com/store/apps/details?id=com.photowatermarkfree)
