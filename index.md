@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/pa-an/PhotoWatermarkFree/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+Add watermarks to your pictures. Put your property text or a logo image into your picture, adjust its size and position.
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![Icon-180](https://user-images.githubusercontent.com/1918294/97402186-b15b4d80-1924-11eb-83f2-c6dc3bcb5bb5.png)
 
-### Jekyll Themes
+## FEATURES
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/pa-an/PhotoWatermarkFree/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Batch Processing
+- Watermark hundreds of files at once.
 
-### Support or Contact
+2. Custom Text Watermarks
+- Create customized text watermarks in seconds. Edit text, color, size.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+3. Pixel-perfect Positioning
+- Position your watermarks with precision. All photos in a batch are updated simultaneously.
+
+**Start watermarking your photo today!**
