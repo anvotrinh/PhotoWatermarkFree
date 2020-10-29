@@ -1,4 +1,5 @@
 lane :internal do
+  increase_version
   gradle(task: 'clean')
   gradle(task: 'bundle', build_type: 'Release')
   upload_to_play_store(
