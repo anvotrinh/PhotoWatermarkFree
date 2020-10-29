@@ -1,38 +1,90 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+lane :internal do
+  gradle(task: 'clean')
+  gradle(task: 'bundle', build_type: 'Release')
+  upload_to_play_store(
+    track: 'internal',
+    skip_upload_apk: true
+  )
+end
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+lane :increase_version do
+  # ensure_git_status_clean
 
-default_platform(:android)
+  # read file
+  path = '../app/build.gradle'
+  s = File.read(path)
+  # update version code
+  re = /versionCode\s+(\d+)/ 
+  s = s.sub(re, "versionCode #{getNextVersionCode}")
+  # update version name
+  re = /versionName\s+"(\d{2}\.\d{2}\.\d{2})(?:\.(\d+))?"/
+  versionName = getNextVersionName
+  s = s.sub(re, "versionName #{versionName}")
+  # save to file
+  f = File.new(path, 'w')
+  f.write(s)
+  f.close
+  # commit
+  git_commit(path: 'app/build.gradle', message: "Stg Version Bump #{versionName}")
+  push_to_git_remote(remote_branch: 'master')
+end
 
-platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+def getLatestVersionName()
+  productionName = google_play_track_release_names(track: 'production')[0]
+  internalName = google_play_track_release_names(track: 'internal')[0]
+  re = /^(\d{2}\.\d{2}\.\d{2})(?:\.(\d+))?$/
+  iMatch = internalName.match(re)
+  pMatch = productionName.match(re)
+  # if version names isn't follow format
+  if !pMatch && !iMatch
+    return nil
+  elsif !iMatch && pMatch != nil
+    return productionName
+  elsif !pMatch && iMatch != nil
+    return internalName
   end
-
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+  # if both follow format
+  iDate = iMatch[1].gsub('.', '').to_i
+  pDate = pMatch[1].gsub('.', '').to_i
+  # compare date
+  if pDate > iDate
+    return productionName
+  elsif pDate < iDate
+    return internalName
   end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  # if same date
+  if pMatch[1].to_i > iMatch[1].to_i
+    return productionName
+  else
+    return internalName
   end
+end
+
+def getNextVersionCode()
+  productionCode = google_play_track_version_codes(track: 'production')
+  internalCode = google_play_track_version_codes(track: 'internal')
+  puts productionCode[0]
+  puts internalCode[0]
+  return ([productionCode[0], internalCode[0]].max + 1).to_s
+end
+
+def getNextVersionName()
+  dateNow = Time.now.strftime("%y.%m.%d")
+  latestName = getLatestVersionName
+  if !latestName
+    return dateNow
+  end
+  re = /^(\d{2}\.\d{2}\.\d{2})(?:\.(\d+))?$/
+  m = latestName.match(re)
+  currentDate = m[1]
+  currentPatch = m[2]
+  nextPatch = ""
+  if dateNow != currentDate
+    nextPatch = ""
+  elsif currentPatch
+    nextPatch = "." + (currentPatch.to_i + 1).to_s
+  else
+    nextPatch = ".2"
+  end
+  return dateNow + nextPatch
 end

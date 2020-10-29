@@ -15,9 +15,14 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### beta
+### internal
 ```
-fastlane beta
+fastlane internal
+```
+
+### increase_version
+```
+fastlane increase_version
 ```
 
 
