@@ -8,7 +8,7 @@ lane :internal do
 end
 
 lane :increase_version do
-  # ensure_git_status_clean
+  ensure_git_status_clean
 
   # read file
   path = '../app/build.gradle'
@@ -63,8 +63,6 @@ end
 def getNextVersionCode()
   productionCode = google_play_track_version_codes(track: 'production')
   internalCode = google_play_track_version_codes(track: 'internal')
-  puts productionCode[0]
-  puts internalCode[0]
   return ([productionCode[0], internalCode[0]].max + 1).to_s
 end
 
