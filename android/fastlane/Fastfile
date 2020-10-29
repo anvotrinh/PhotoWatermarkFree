@@ -19,7 +19,7 @@ lane :increase_version do
   # update version name
   re = /versionName\s+"(\d{2}\.\d{2}\.\d{2})(?:\.(\d+))?"/
   versionName = getNextVersionName
-  s = s.sub(re, "versionName #{versionName}")
+  s = s.sub(re, "versionName \"#{versionName}\"")
   # save to file
   f = File.new(path, 'w')
   f.write(s)
