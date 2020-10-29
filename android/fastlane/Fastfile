@@ -1,4 +1,5 @@
 lane :internal do
+  changeEnv('staging')
   increase_version
   gradle(task: 'clean')
   gradle(task: 'bundle', build_type: 'Release')
@@ -86,4 +87,22 @@ def getNextVersionName()
     nextPatch = ".2"
   end
   return dateNow + nextPatch
+end
+
+$stagingEnv = "API_URL=https://parkings.telesoftmobile.com
+SENTRY_DNS=https://babf1d363a27422a9b210e2ac579f7ba@sentry.io/1869369
+ENVIRONMENT=staging
+ENABLE_REDUX_LOGGER=true"
+$productionEnv = "API_URL=https://park.eastonmd.gov
+SENTRY_DNS=https://babf1d363a27422a9b210e2ac579f7ba@sentry.io/1869369
+ENVIRONMENT=production
+ENABLE_REDUX_LOGGER=false"
+def changeEnv(env)
+  f = File.new('../../.env', 'w')
+  content = $stagingEnv
+  if env == "production"
+    content = $productionEnv
+  end
+  f.write(content)
+  f.close
 end
