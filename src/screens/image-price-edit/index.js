@@ -66,7 +66,7 @@ export default ({navigation, route}) => {
     const imageData = imgBase64.split('data:image/png;base64,')[1];
     const imagePath = generateTempPath(`image_${imgIndex}.png`);
     await RNFS.writeFile(imagePath, imageData, 'base64');
-    await CameraRoll.saveToCameraRoll(imagePath, 'photo');
+    await CameraRoll.save(imagePath, {type: 'photo'});
     setImgIndex(imgIndex + 1);
   };
 

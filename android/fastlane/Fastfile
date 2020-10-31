@@ -1,15 +1,22 @@
+fastlane_require 'dotenv'
+
+before_all do
+  Dotenv.overload '.env.secret'
+end
+
 lane :internal do
   changeEnv('staging')
-  increase_version
+  versionName = increaseVersion
   gradle(task: 'clean')
   gradle(task: 'bundle', build_type: 'Release')
   upload_to_play_store(
     track: 'internal',
     skip_upload_apk: true
   )
+  notifySlack(versionName)
 end
 
-lane :increase_version do
+def increaseVersion()
   ensure_git_status_clean
 
   # read file
@@ -29,6 +36,17 @@ lane :increase_version do
   # commit
   git_commit(path: 'app/build.gradle', message: "Stg Version Bump #{versionName}")
   push_to_git_remote(remote_branch: 'master')
+  return versionName
+end
+
+def notifySlack(versionName)
+  message = "New internal version (#{versionName}) of Park Smart Android has been deployed successfully. Please download it <https://play.google.com/store/apps/details?id=com.psad_mobile|here>"
+  slack(
+    message: message,
+    slack_url: ENV['DEV_CHANNEL_SLACK_URL'],
+    success: true,
+    default_payloads: []
+  )
 end
 
 def getLatestVersionName()
@@ -89,20 +107,12 @@ def getNextVersionName()
   return dateNow + nextPatch
 end
 
-$stagingEnv = "API_URL=https://parkings.telesoftmobile.com
-SENTRY_DNS=https://babf1d363a27422a9b210e2ac579f7ba@sentry.io/1869369
-ENVIRONMENT=staging
-ENABLE_REDUX_LOGGER=true"
-$productionEnv = "API_URL=https://park.eastonmd.gov
-SENTRY_DNS=https://babf1d363a27422a9b210e2ac579f7ba@sentry.io/1869369
-ENVIRONMENT=production
-ENABLE_REDUX_LOGGER=false"
 def changeEnv(env)
   f = File.new('../../.env', 'w')
-  content = $stagingEnv
-  if env == "production"
-    content = $productionEnv
-  end
+  apiUrl = "#{env.upcase}_API_URL"
+  content = "API_URL=#{ENV[apiUrl]}
+ENVIRONMENT=#{env}
+ENABLE_REDUX_LOGGER=#{env == 'production' ? 'false' : 'true'}"
   f.write(content)
   f.close
 end

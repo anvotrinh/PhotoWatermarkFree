@@ -20,11 +20,6 @@ or alternatively using `brew install fastlane`
 fastlane internal
 ```
 
-### increase_version
-```
-fastlane increase_version
-```
-
 
 ----
 
