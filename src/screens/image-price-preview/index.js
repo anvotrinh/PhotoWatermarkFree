@@ -146,8 +146,8 @@ export default ({navigation, route}) => {
               source={{uri: logoBase64}}
               style={[styles.sampleLogo, logoStyle]}
             />
-            <Text
-              style={[styles.sampleText, {fontSize}]}>{`${price}k + FS`}</Text>
+            <Text style={[styles.sampleText, {fontSize}]}>{price}</Text>
+            {/* `${price}k + FS` */}
           </View>
         </View>
       </View>

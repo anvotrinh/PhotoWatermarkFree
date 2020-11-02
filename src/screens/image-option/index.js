@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {CheckBox, Input} from 'react-native-elements';
+import {StyleSheet, View, Linking} from 'react-native';
+import {CheckBox, Input, Overlay, Text, Button} from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {Header} from '../../components';
 import {toFullLocalPath} from '../../utils';
@@ -10,11 +11,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  overlayContainer: {
+    padding: 20,
+  },
+  overlayBtn: {
+    marginTop: 20,
+  },
 });
 
 export default ({navigation}) => {
   const [mode, setMode] = useState('mark');
-  const [price, setPrice] = useState('180');
+  const [price, setPrice] = useState('Your text');
+  const [overlayVisible, setOverlayVisible] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const toggleOverlay = () => {
+    setOverlayVisible(!overlayVisible);
+  };
+
+  const handleOpenSetting = () => {
+    Linking.openSettings();
+  };
 
   const handleNext = async () => {
     try {
@@ -29,7 +46,11 @@ export default ({navigation}) => {
         navigation.navigate('ImagePricePreview', {imgUris, price});
       }
     } catch (e) {
-      console.log(e.message);
+      if (e.message === 'User cancelled image selection') {
+        return;
+      }
+      setOverlayVisible(true);
+      setMessage(e.message);
     }
   };
 
@@ -41,6 +62,24 @@ export default ({navigation}) => {
         onNext={handleNext}
         hasBack={false}
       />
+      <Overlay isVisible={overlayVisible} onBackdropPress={toggleOverlay}>
+        {message.startsWith('Cannot access images') ? (
+          <View style={styles.overlayContainer}>
+            <Text h4>Need Permission</Text>
+            <Text>Please grant Photo permission to use PhotoWatermark.</Text>
+            <Button
+              icon={<Icon name="ios-settings" size={15} />}
+              title="PhotoWatermark Settings"
+              onPress={handleOpenSetting}
+              style={styles.overlayBtn}
+            />
+          </View>
+        ) : (
+          <View style={styles.overlayContainer}>
+            <Text>{message}</Text>
+          </View>
+        )}
+      </Overlay>
       <CheckBox
         title="Mark by order number"
         checked={mode === 'mark'}
