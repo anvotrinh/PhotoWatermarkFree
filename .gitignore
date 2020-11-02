@@ -59,4 +59,5 @@ buck-out/
 /ios/Pods/
 
 /android/key.json
+/android/fastlane/.env.secret
 /.env
