@@ -52,7 +52,7 @@ export default ({navigation, route}) => {
 
   const editImage = async () => {
     const imgUri = imgUris[imgIndex];
-    const imgText = `${price}k + FS`;
+    const imgText = price; // `${price}k + FS`;
     const imgBase64 = await RNFS.readFile(imgUri, 'base64');
     webViewRef.current.injectJavaScript(
       `(function() {

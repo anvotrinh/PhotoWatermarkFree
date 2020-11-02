@@ -42,12 +42,12 @@ export default ({navigation}) => {
         hasBack={false}
       />
       <CheckBox
-        title="Mark number"
+        title="Mark by order number"
         checked={mode === 'mark'}
         onPress={() => setMode('mark')}
       />
       <CheckBox
-        title="Mark price"
+        title="Mark by text"
         checked={mode === 'price'}
         onPress={() => setMode('price')}
       />
@@ -55,7 +55,7 @@ export default ({navigation}) => {
         <Input
           value={price}
           onChangeText={setPrice}
-          placeholder="price"
+          placeholder="Your text"
           leftIcon={{type: 'ionicon', name: 'ios-pricetag'}}
           leftIconContainerStyle={{marginRight: 10}}
         />
