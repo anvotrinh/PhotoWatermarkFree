@@ -7,6 +7,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Header} from '../../components';
 import {toFullLocalPath} from '../../utils';
 
+function isMissingPermissionMessage(message) {
+  return (
+    message.startsWith('Cannot access images') ||
+    message.startsWith('Required permission missing')
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,7 +70,7 @@ export default ({navigation}) => {
         hasBack={false}
       />
       <Overlay isVisible={overlayVisible} onBackdropPress={toggleOverlay}>
-        {message.startsWith('Cannot access images') ? (
+        {isMissingPermissionMessage(message) ? (
           <View style={styles.overlayContainer}>
             <Text h4>Need Permission</Text>
             <Text>Please grant Photo permission to use PhotoWatermark.</Text>
