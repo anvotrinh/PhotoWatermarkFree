@@ -4,7 +4,7 @@
 
 [Download Android App](https://play.google.com/store/apps/details?id=com.photowatermarkfree)
 
-[Download IOS App](https://play.google.com/store/apps/details?id=com.photowatermarkfree)
+[Download IOS App](https://apps.apple.com/us/app/photo-watermark-batch-process/id1537630089)
 
 ![Icon-180](https://user-images.githubusercontent.com/1918294/97402186-b15b4d80-1924-11eb-83f2-c6dc3bcb5bb5.png)
 
