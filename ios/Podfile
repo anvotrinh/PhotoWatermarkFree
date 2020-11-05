@@ -10,12 +10,6 @@ target 'PhotoWatermarkFree' do
 
   pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
 
-
-  target 'PhotoWatermarkFreeTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
@@ -23,14 +17,5 @@ target 'PhotoWatermarkFree' do
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
-  end
-end
-
-target 'PhotoWatermarkFree-tvOS' do
-  # Pods for PhotoWatermarkFree-tvOS
-
-  target 'PhotoWatermarkFree-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 end
