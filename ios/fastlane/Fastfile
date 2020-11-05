@@ -7,6 +7,10 @@ end
 lane :internal do
   changeEnv('staging')
   buildNumber = increaseBuildNumber
+  build_app(
+    workspace: "PhotoWatermarkFree.xcworkspace",
+    scheme: "PhotoWatermarkFree"
+  )
   upload_to_testflight
   notifySlack(buildNumber)
 end
