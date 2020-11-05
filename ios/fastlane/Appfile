@@ -1,0 +1,8 @@
+app_identifier("com.photowatermarkfree") # The bundle identifier of your app
+apple_id("anvotrinh@gmail.com") # Your Apple email address
+
+itc_team_id("122271663") # App Store Connect Team ID
+team_id("9T6G7XSCMC") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

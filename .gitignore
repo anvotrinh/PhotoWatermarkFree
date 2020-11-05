@@ -61,3 +61,5 @@ buck-out/
 /android/key.json
 /android/fastlane/.env.secret
 /.env
+/ios/fastlane/.env.secret
+*app.dSYM.zip
