@@ -7,7 +7,7 @@ end
 lane :internal do
   changeEnv('staging')
   buildNumber = increaseBuildNumber
-  # upload_to_testflight
+  upload_to_testflight
   notifySlack(buildNumber)
 end
 
