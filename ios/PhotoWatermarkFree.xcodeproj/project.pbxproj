@@ -756,7 +756,7 @@
 				CODE_SIGN_ENTITLEMENTS = PhotoWatermarkFree/PhotoWatermarkFree.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9T6G7XSCMC;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PhotoWatermarkFree/Info.plist;
@@ -785,7 +785,7 @@
 				CODE_SIGN_ENTITLEMENTS = PhotoWatermarkFree/PhotoWatermarkFree.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9T6G7XSCMC;
 				INFOPLIST_FILE = PhotoWatermarkFree/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
