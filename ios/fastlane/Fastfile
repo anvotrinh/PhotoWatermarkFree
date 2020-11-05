@@ -20,7 +20,7 @@ def increaseBuildNumber()
   # update build number
   buildNumber = latest_testflight_build_number + 1
 
-  re = /CURRENT_PROJECT_VERSION\s+=\s+(\d+);/ 
+  re = /CURRENT_PROJECT_VERSION\s+=\s+([\d.]+);/ 
   s = s.gsub(re, "CURRENT_PROJECT_VERSION = #{buildNumber};")
   # save to file
   f = File.new(path, 'w')
