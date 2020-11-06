@@ -16,6 +16,18 @@ lane :internal do
   notifySlack(versionName, versionCode)
 end
 
+lane :release do
+  changeEnv('production')
+  versionName, versionCode = increaseVersionCode
+  gradle(task: 'clean')
+  gradle(task: 'bundle', build_type: 'Release')
+  upload_to_play_store(
+    track: 'production',
+    skip_upload_apk: true
+  )
+  changeEnv('staging')
+end
+
 def increaseVersionCode()
   ensure_git_status_clean
 

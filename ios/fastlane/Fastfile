@@ -15,6 +15,23 @@ lane :internal do
   notifySlack(buildNumber)
 end
 
+lane :release do
+  changeEnv('production')
+  buildNumber = increaseBuildNumber
+  build_app(
+    workspace: "PhotoWatermarkFree.xcworkspace",
+    scheme: "PhotoWatermarkFree"
+  )
+  upload_to_app_store(
+    force: true,
+    release_notes: {
+      "en-US": 'Bug fixes and performance improvements'
+    },
+    submit_for_review: true
+  )
+  changeEnv('staging')
+end
+
 def increaseBuildNumber()
   ensure_git_status_clean
 
