@@ -27,6 +27,9 @@ lane :release do
     release_notes: {
       "en-US": 'Bug fixes and performance improvements'
     },
+    submission_information: {
+      add_id_info_uses_idfa: false
+    },
     submit_for_review: true
   )
   changeEnv('staging')

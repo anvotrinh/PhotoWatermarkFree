@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "clean:install": "rm -rf node_modules ios/Pods ios/Podfile.lock ios/build android/build package-lock.json yarn.lock && yarn && cd ios && pod install && cd ..",
-    "deploy:internal": "cd android && fastlane internal && cd .. && cd ios && fastlane internal && cd ..",
+    "deploy:internal": "cd android && bundle exec fastlane internal && cd .. && cd ios && bundle exec fastlane internal && cd ..",
+    "deploy:release": "cd android && bundle exec fastlane release && cd .. && cd ios && bundle exec fastlane release && cd ..",
     "lint": "eslint src/. --ext .js --fix"
   },
   "dependencies": {
