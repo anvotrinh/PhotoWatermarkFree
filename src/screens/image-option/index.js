@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Linking} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View, Linking, Image, AsyncStorage} from 'react-native';
 import {CheckBox, Input, Overlay, Text, Button} from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
+import IconAntDesign from 'react-native-vector-icons/AntDesign';
+import RNFS from 'react-native-fs';
 
 import {Header} from '../../components';
 import {toFullLocalPath} from '../../utils';
+import logoBase64 from '../../base64/logo.js';
 
 function isMissingPermissionMessage(message) {
   return (
@@ -24,6 +27,27 @@ const styles = StyleSheet.create({
   overlayBtn: {
     marginTop: 20,
   },
+  logoTitleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 10,
+  },
+  logoTitle: {
+    fontSize: 18,
+    marginLeft: 13,
+  },
+  logo: {
+    resizeMode: 'stretch',
+    width: '50%',
+    aspectRatio: 2.65,
+    marginLeft: 10,
+    marginTop: 10,
+    borderWidth: 1,
+  },
+  btnUploadLogo: {
+    width: '50%',
+    marginLeft: 10,
+  },
 });
 
 export default ({navigation}) => {
@@ -31,6 +55,24 @@ export default ({navigation}) => {
   const [price, setPrice] = useState('Your text');
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [message, setMessage] = useState('');
+  const [logo, setLogo] = useState('');
+
+  const getLocalData = async () => {
+    const storedLogo = await AsyncStorage.getItem('logo');
+    const storedPrice = await AsyncStorage.getItem('price');
+    if (storedLogo) {
+      setLogo(storedLogo);
+    } else {
+      setLogo(logoBase64);
+    }
+    if (storedPrice) {
+      setPrice(storedPrice);
+    }
+  };
+
+  useEffect(() => {
+    getLocalData();
+  }, []);
 
   const toggleOverlay = () => {
     setOverlayVisible(!overlayVisible);
@@ -50,8 +92,25 @@ export default ({navigation}) => {
       if (mode === 'mark') {
         navigation.navigate('ImageMarkPreview', {imgUris});
       } else {
-        navigation.navigate('ImagePricePreview', {imgUris, price});
+        AsyncStorage.setItem('price', price);
+        navigation.navigate('ImagePricePreview', {imgUris, price, logo});
       }
+    } catch (e) {
+      if (e.message === 'User cancelled image selection') {
+        return;
+      }
+      setOverlayVisible(true);
+      setMessage(e.message);
+    }
+  };
+
+  const handleChooseLogo = async () => {
+    try {
+      const image = await ImagePicker.openPicker({});
+      const imgData = await RNFS.readFile(image.path, 'base64');
+      const imgBase64 = `data:image/png;base64,${imgData}`;
+      setLogo(imgBase64);
+      AsyncStorage.setItem('logo', imgBase64);
     } catch (e) {
       if (e.message === 'User cancelled image selection') {
         return;
@@ -98,13 +157,26 @@ export default ({navigation}) => {
         onPress={() => setMode('price')}
       />
       {mode === 'price' && (
-        <Input
-          value={price}
-          onChangeText={setPrice}
-          placeholder="Your text"
-          leftIcon={{type: 'ionicon', name: 'ios-pricetag'}}
-          leftIconContainerStyle={{marginRight: 10}}
-        />
+        <>
+          <Input
+            value={price}
+            onChangeText={setPrice}
+            placeholder="Your text"
+            leftIcon={{type: 'ionicon', name: 'ios-pricetag'}}
+            leftIconContainerStyle={{marginRight: 10}}
+          />
+          <View style={styles.logoTitleWrapper}>
+            <Icon name="md-image" size={25} />
+            <Text style={styles.logoTitle}>Logo Image (ratio 2.65 : 1):</Text>
+          </View>
+          {logo && <Image source={{uri: logo}} style={styles.logo} />}
+          <Button
+            icon={<IconAntDesign name="upload" size={15} color="white" />}
+            title=" Choose Other Logo"
+            style={styles.btnUploadLogo}
+            onPress={handleChooseLogo}
+          />
+        </>
       )}
     </View>
   );

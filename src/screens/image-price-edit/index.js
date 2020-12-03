@@ -9,9 +9,6 @@ import {Button} from 'react-native-elements';
 import htmlRenderer from './html';
 import {generateTempPath} from '../../utils';
 import {Header, Modal} from '../../components';
-import logoBase64 from '../../base64/logo.js';
-
-const html = htmlRenderer(logoBase64);
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 export default ({navigation, route}) => {
-  const {imgUris, price, xPercent, yPercent, fontSize} = route.params;
+  const {imgUris, price, xPercent, yPercent, fontSize, logo} = route.params;
 
   const webViewRef = useRef();
   const [imgIndex, setImgIndex] = useState(0);
@@ -74,6 +71,8 @@ export default ({navigation, route}) => {
     setSuccessVisible(false);
     navigation.navigate('ImageOption');
   };
+
+  const html = htmlRenderer(logo);
 
   return (
     <View style={styles.container}>

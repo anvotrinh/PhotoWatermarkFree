@@ -4,7 +4,6 @@ import Slider from '@react-native-community/slider';
 
 import {getResolutionAsync} from '../../utils';
 import {Header} from '../../components';
-import logoBase64 from '../../base64/logo.js';
 
 const imageWrapperWidth = Dimensions.get('window').width;
 
@@ -60,7 +59,7 @@ const SliderWithText = ({text, ...otherProps}) => (
 );
 
 export default ({navigation, route}) => {
-  const {imgUris, price} = route.params;
+  const {imgUris, price, logo} = route.params;
   if (imgUris.length === 0) {
     return null;
   }
@@ -92,6 +91,7 @@ export default ({navigation, route}) => {
       xPercent,
       yPercent,
       fontSize,
+      logo,
     });
   };
 
@@ -143,7 +143,7 @@ export default ({navigation, route}) => {
           <Image style={imageStyle} source={{uri: imgUri}} />
           <View style={[styles.sampleTextWrapper, sampleTextPos]}>
             <Image
-              source={{uri: logoBase64}}
+              source={{uri: logo}}
               style={[styles.sampleLogo, logoStyle]}
             />
             <Text style={[styles.sampleText, {fontSize}]}>{price}</Text>

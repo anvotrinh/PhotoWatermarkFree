@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, StyleSheet, LogBox} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import 'react-native-gesture-handler';
 
 import AppNavigator from './app-navigator';
+
+LogBox.ignoreLogs(['AsyncStorage']);
 
 const styles = StyleSheet.create({
   container: {
