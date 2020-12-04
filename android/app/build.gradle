@@ -134,7 +134,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 17
-        versionName "20.11.02.3"
+        versionName "20.11.07"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
