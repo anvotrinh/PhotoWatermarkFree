@@ -6,7 +6,7 @@ import CameraRoll from '@react-native-community/cameraroll';
 import * as Progress from 'react-native-progress';
 import {Button} from 'react-native-elements';
 
-import htmlRenderer from './html';
+import html from './html';
 import {generateTempPath} from '../../utils';
 import {Header, Modal} from '../../components';
 
@@ -53,7 +53,7 @@ export default ({navigation, route}) => {
     const imgBase64 = await RNFS.readFile(imgUri, 'base64');
     webViewRef.current.injectJavaScript(
       `(function() {
-        editImage('${imgBase64}', '${imgText}', ${xPercent}, ${yPercent}, ${fontSize});
+        editImage('${imgBase64}', '${logo}', '${imgText}', ${xPercent}, ${yPercent}, ${fontSize});
       })();`,
     );
   };
@@ -71,8 +71,6 @@ export default ({navigation, route}) => {
     setSuccessVisible(false);
     navigation.navigate('ImageOption');
   };
-
-  const html = htmlRenderer(logo);
 
   return (
     <View style={styles.container}>

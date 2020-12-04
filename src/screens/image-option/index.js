@@ -107,8 +107,7 @@ export default ({navigation}) => {
   const handleChooseLogo = async () => {
     try {
       const image = await ImagePicker.openPicker({});
-      const imgData = await RNFS.readFile(image.path, 'base64');
-      const imgBase64 = `data:image/png;base64,${imgData}`;
+      const imgBase64 = await RNFS.readFile(image.path, 'base64');
       setLogo(imgBase64);
       AsyncStorage.setItem('logo', imgBase64);
     } catch (e) {
@@ -169,7 +168,12 @@ export default ({navigation}) => {
             <Icon name="md-image" size={25} />
             <Text style={styles.logoTitle}>Logo Image (ratio 2.65 : 1):</Text>
           </View>
-          {logo && <Image source={{uri: logo}} style={styles.logo} />}
+          {logo && (
+            <Image
+              source={{uri: `data:image/png;base64,${logo}`}}
+              style={styles.logo}
+            />
+          )}
           <Button
             icon={<IconAntDesign name="upload" size={15} color="white" />}
             title=" Choose Other Logo"

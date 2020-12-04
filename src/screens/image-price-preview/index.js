@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     padding: 3,
     alignItems: 'center',
-    opacity: 0.7,
   },
   sampleText: {
     marginTop: 5,
@@ -143,7 +142,7 @@ export default ({navigation, route}) => {
           <Image style={imageStyle} source={{uri: imgUri}} />
           <View style={[styles.sampleTextWrapper, sampleTextPos]}>
             <Image
-              source={{uri: logo}}
+              source={{uri: `data:image/png;base64,${logo}`}}
               style={[styles.sampleLogo, logoStyle]}
             />
             <Text style={[styles.sampleText, {fontSize}]}>{price}</Text>
