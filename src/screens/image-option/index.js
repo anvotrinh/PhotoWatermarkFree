@@ -62,6 +62,7 @@ export default ({navigation}) => {
   const [price, setPrice] = useState('Your text');
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [message, setMessage] = useState('');
+  const [markPrefix, setMarkPrefix] = useState('Photo');
   const [logo, setLogo] = useState('');
   const [logoBase64Url, setLogoBase64Url] = useState('');
   const [base64ModalVisible, setBase64ModalVisible] = useState(false);
@@ -69,6 +70,7 @@ export default ({navigation}) => {
   const getLocalData = async () => {
     const storedLogo = await AsyncStorage.getItem('logo');
     const storedPrice = await AsyncStorage.getItem('price');
+    const storedMarkPrefix = await AsyncStorage.getItem('markPrefix');
     if (storedLogo) {
       setLogo(storedLogo);
     } else {
@@ -76,6 +78,9 @@ export default ({navigation}) => {
     }
     if (storedPrice) {
       setPrice(storedPrice);
+    }
+    if (storedMarkPrefix) {
+      setMarkPrefix(storedMarkPrefix);
     }
   };
 
@@ -99,7 +104,8 @@ export default ({navigation}) => {
       });
       const imgUris = images.map((i) => toFullLocalPath(i.path));
       if (mode === 'mark') {
-        navigation.navigate('ImageMarkPreview', {imgUris});
+        AsyncStorage.setItem('markPrefix', markPrefix);
+        navigation.navigate('ImageMarkPreview', {imgUris, prefix: markPrefix});
       } else {
         AsyncStorage.setItem('price', price);
         navigation.navigate('ImagePricePreview', {imgUris, price, logo});
@@ -176,6 +182,14 @@ export default ({navigation}) => {
         checked={mode === 'mark'}
         onPress={() => setMode('mark')}
       />
+      {mode === 'mark' && (
+        <Input
+          label="Prefix text"
+          value={markPrefix}
+          onChangeText={setMarkPrefix}
+          style={{marginLeft: 10}}
+        />
+      )}
       <CheckBox
         title="Mark by text"
         checked={mode === 'price'}

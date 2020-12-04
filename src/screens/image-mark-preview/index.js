@@ -55,12 +55,12 @@ const SliderWithText = ({text, ...otherProps}) => (
 );
 
 export default ({navigation, route}) => {
-  const {imgUris} = route.params;
+  const {imgUris, prefix} = route.params;
   if (imgUris.length === 0) {
     return null;
   }
   const imgUri = imgUris[0];
-  const sampleText = 'Photo 1';
+  const sampleText = `${prefix} 1`;
 
   const [imageRatio, setImageRatio] = useState(0);
   const [xPercent, setXPercent] = useState(0.6);
@@ -87,6 +87,7 @@ export default ({navigation, route}) => {
       xPercent,
       yPercent,
       fontSize,
+      prefix,
     });
   };
 

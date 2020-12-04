@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 export default ({navigation, route}) => {
-  const {imgUris, xPercent, yPercent, fontSize} = route.params;
+  const {imgUris, xPercent, yPercent, fontSize, prefix} = route.params;
 
   const webViewRef = useRef();
   const [imgIndex, setImgIndex] = useState(0);
@@ -55,7 +55,7 @@ export default ({navigation, route}) => {
 
   const editImage = async () => {
     const imgUri = imgUris[imgIndex];
-    const imgText = `Photo ${imgIndex + 1}`;
+    const imgText = `${prefix} ${imgIndex + 1}`;
     const imgBase64 = await RNFS.readFile(imgUri, 'base64');
     webViewRef.current.injectJavaScript(
       `(function() {
