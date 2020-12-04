@@ -25,14 +25,13 @@ export default (logoBase64) => `<!DOCTYPE html>
       
       ctx.drawImage(image, 0, 0);
 
-      ctx.globalAlpha = 0.7;
       var logo = document.getElementById("logo");
       var logoWidth = 5.3 * fontSize;
       var logoHeight = 2 * fontSize;
       ctx.drawImage(logo, left + padding, top + padding, logoWidth, logoHeight);
       
       ctx.font = "bold " + fontSize + "px Arial";
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "#F652A0";
       var textWidth = ctx.measureText(text).width;
       ctx.fillText(text, left + padding + (logoWidth - textWidth) / 2, top + padding + fontSize * 1.15 + logoHeight);
 

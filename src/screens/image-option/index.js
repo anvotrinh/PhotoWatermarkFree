@@ -1,12 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Linking, Image, AsyncStorage} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Linking,
+  Image,
+  AsyncStorage,
+  Alert,
+} from 'react-native';
 import {CheckBox, Input, Overlay, Text, Button} from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import RNFS from 'react-native-fs';
 
-import {Header} from '../../components';
+import {Header, Modal} from '../../components';
 import {toFullLocalPath} from '../../utils';
 import logoBase64 from '../../base64/logo.js';
 
@@ -56,6 +63,8 @@ export default ({navigation}) => {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [message, setMessage] = useState('');
   const [logo, setLogo] = useState('');
+  const [logoBase64Url, setLogoBase64Url] = useState('');
+  const [base64ModalVisible, setBase64ModalVisible] = useState(false);
 
   const getLocalData = async () => {
     const storedLogo = await AsyncStorage.getItem('logo');
@@ -120,6 +129,22 @@ export default ({navigation}) => {
     }
   };
 
+  const handleChooseBase64 = () => {
+    setBase64ModalVisible(true);
+  };
+
+  const handleLogoBase64Submit = async () => {
+    try {
+      const res = await fetch(logoBase64Url);
+      const json = await res.json();
+      setLogo(json.base64);
+      AsyncStorage.setItem('logo', json.base64);
+      setBase64ModalVisible(false);
+    } catch (e) {
+      Alert.alert(e.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Header
@@ -175,9 +200,22 @@ export default ({navigation}) => {
             title=" Choose Other Logo"
             style={styles.btnUploadLogo}
             onPress={handleChooseLogo}
+            onLongPress={handleChooseBase64}
           />
         </>
       )}
+      <Modal
+        visible={base64ModalVisible}
+        onToggle={() => setBase64ModalVisible(false)}>
+        <Input
+          value={logoBase64Url}
+          onChangeText={setLogoBase64Url}
+          placeholder="json URL with format { base64: ... }"
+          leftIcon={{type: 'foundation', name: 'web'}}
+          leftIconContainerStyle={{marginRight: 10}}
+        />
+        <Button title="Submit" onPress={handleLogoBase64Submit} />
+      </Modal>
     </View>
   );
 };

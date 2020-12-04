@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Modal = ({visible, children}) => {
+export const Modal = ({visible, children, onToggle}) => {
   return (
     <RNModal transparent visible={visible} hardwareAccelerated>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <TouchableWithoutFeedback onPress={onToggle} accessible={false}>
         <View style={styles.container}>
           <View style={styles.content}>{children}</View>
         </View>

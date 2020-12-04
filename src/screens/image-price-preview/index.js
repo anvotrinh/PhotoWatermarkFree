@@ -34,13 +34,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     padding: 3,
     alignItems: 'center',
-    opacity: 0.7,
   },
   sampleText: {
     marginTop: 5,
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    color: 'white',
+    color: '#F652A0',
   },
 });
 
@@ -147,7 +146,6 @@ export default ({navigation, route}) => {
               style={[styles.sampleLogo, logoStyle]}
             />
             <Text style={[styles.sampleText, {fontSize}]}>{price}</Text>
-            {/* `${price}k + FS` */}
           </View>
         </View>
       </View>
