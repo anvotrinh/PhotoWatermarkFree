@@ -4,7 +4,8 @@
       "browser": true
   },
   "plugins": [
-      "react"
+      "react",
+      "prettier"
   ],
   "extends": [
       "eslint:recommended",
@@ -12,20 +13,11 @@
       "plugin:react-native/all"
   ],
   "rules": {
-      "react/display-name": [0],
-      "semi": ["error", "never"],
-      "quotes": ["error", "single", { "avoidEscape": true }],
-      "object-curly-spacing": ["error", "always"],
-      "array-bracket-spacing": ["error", "never"],
-      "computed-property-spacing": ["error", "never"],
-      "comma-dangle": ["error", "always-multiline"],
-      "comma-style": ["error", "last"],
-      "comma-spacing": ["error", { "before": false, "after": true }],
-      "arrow-parens": ["error", "as-needed"],
-      "jsx-quotes": ["error", "prefer-single"],
-      "no-console": "error",
+      "prettier/prettier": "error",
+      "react/display-name": "off",
       "react/prop-types": "off",
-      "react-native/split-platform-components": "off"
+      "react-native/split-platform-components": "off",
+      "no-console": "error"
   },
   "settings": {
       "react": {
@@ -33,9 +25,7 @@
       }
   },
   "globals": {
-    "require": true,
     "Promise": true,
-    "Set": true,
-    "global": true
+    "Set": true
   }
 }

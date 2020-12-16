@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start --reset-cache",
-    "lint": "eslint src/. --ext .js --fix && prettier --write '**/*.js'",
+    "lint": "eslint src/. --ext .js --fix",
     "deploy:internal": "cd android && bundle exec fastlane internal && cd .. && cd ios && bundle exec fastlane internal && cd ..",
     "deploy:release": "cd android && bundle exec fastlane release && cd .. && cd ios && bundle exec fastlane release && cd .."
   },
@@ -50,9 +50,11 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
+    "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react-native": "^3.10.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.57.0",
+    "prettier": "2.2.1",
     "react-test-renderer": "16.13.1"
   },
   "jest": {
