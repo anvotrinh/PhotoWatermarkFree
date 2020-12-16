@@ -6,25 +6,19 @@ import { Icon } from './icon'
 import { Metrics, Colors } from '../theme'
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-  item: {
-    marginHorizontal: Metrics.space.small,
-  },
   checkBox: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
   },
   checkBoxContent: {
     alignItems: 'center',
-    justifyContent: 'center',
-    width: Metrics.space.normal,
-    height: Metrics.space.normal,
-    borderRadius: 3,
-    borderWidth: 1,
     backgroundColor: Colors.grayOpacity(0.08),
     borderColor: Colors.gray,
+    borderRadius: 3,
+    borderWidth: 1,
+    height: Metrics.space.normal,
+    justifyContent: 'center',
+    width: Metrics.space.normal,
   },
   checkBoxContentChecked: {
     backgroundColor: Colors.primary,
@@ -32,6 +26,12 @@ const styles = StyleSheet.create({
   },
   checkBoxLabel: {
     marginHorizontal: 12,
+  },
+  container: {
+    flexDirection: 'row',
+  },
+  item: {
+    marginHorizontal: Metrics.space.small,
   },
 })
 

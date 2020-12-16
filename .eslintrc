@@ -8,12 +8,13 @@
   ],
   "extends": [
       "eslint:recommended",
-      "plugin:react/recommended"
+      "plugin:react/recommended",
+      "plugin:react-native/all"
   ],
   "rules": {
       "react/display-name": [0],
       "semi": ["error", "never"],
-      "quotes": ["error", "single"],
+      "quotes": ["error", "single", { "avoidEscape": true }],
       "object-curly-spacing": ["error", "always"],
       "array-bracket-spacing": ["error", "never"],
       "computed-property-spacing": ["error", "never"],
@@ -23,7 +24,8 @@
       "arrow-parens": ["error", "as-needed"],
       "jsx-quotes": ["error", "prefer-single"],
       "no-console": "error",
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "react-native/split-platform-components": "off"
   },
   "settings": {
       "react": {

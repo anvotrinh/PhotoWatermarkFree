@@ -4,6 +4,7 @@ import Slider from '@react-native-community/slider'
 
 import { getResolutionAsync } from '../../utils'
 import { Header } from '../../components'
+import { Colors } from '../../../theme'
 
 const imageWrapperWidth = Dimensions.get('window').width
 
@@ -11,35 +12,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  sliderWithText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-  },
-  slider: {
+  imgContent: {
     flex: 1,
-    height: 40,
   },
   imgWrapper: {
-    flex: 1,
     alignItems: 'center',
-  },
-  imgContent: {
     flex: 1,
   },
   sampleLogo: {
     resizeMode: 'cover',
   },
-  sampleTextWrapper: {
-    position: 'absolute',
-    padding: 3,
-    alignItems: 'center',
-  },
   sampleText: {
-    marginTop: 5,
+    color: Colors.brilliantRose,
     fontFamily: 'Arial',
     fontWeight: 'bold',
-    color: '#F652A0',
+    marginTop: 5,
+  },
+  sampleTextWrapper: {
+    alignItems: 'center',
+    padding: 3,
+    position: 'absolute',
+  },
+  slider: {
+    flex: 1,
+    height: 40,
+  },
+  sliderWithText: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: 10,
   },
 })
 

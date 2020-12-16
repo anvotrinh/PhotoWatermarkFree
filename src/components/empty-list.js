@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     marginTop: Metrics.space.xs,
   },
   description: {
-    marginTop: Metrics.space.xs,
     color: Colors.gray,
+    marginTop: Metrics.space.xs,
   },
 })
 

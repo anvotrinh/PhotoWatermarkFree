@@ -7,18 +7,25 @@ import { Metrics, Colors } from '../../../theme'
 import { ChildLang } from '../../../language'
 
 const styles = StyleSheet.create({
+  btn: {
+    marginHorizontal: Metrics.space.xs,
+  },
+  btnWrapper: {
+    flexDirection: 'row',
+  },
   flatList: {
     backgroundColor: Colors.white,
   },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: Metrics.space.small,
-    borderColor: Colors.primary,
-    borderBottomWidth: 1,
+  infoWrapper: {
+    flex: 1,
+    marginLeft: Metrics.space.normal,
   },
-  topItem: {
-    borderTopWidth: 1,
+  item: {
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: Colors.primary,
+    flexDirection: 'row',
+    paddingHorizontal: Metrics.space.small,
   },
   itemBody: {
     flex: 1,
@@ -26,18 +33,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 100,
   },
-  infoWrapper: {
-    flex: 1,
-    marginLeft: Metrics.space.normal,
-  },
   textName: {
     fontSize: 16,
   },
-  btnWrapper: {
-    flexDirection: 'row',
-  },
-  btn: {
-    marginHorizontal: Metrics.space.xs,
+  topItem: {
+    borderTopWidth: 1,
   },
 })
 

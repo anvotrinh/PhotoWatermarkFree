@@ -8,16 +8,16 @@ import { Button } from '../../components'
 import { Colors, Metrics } from '../../theme'
 
 const styles = StyleSheet.create({
+  btn: {
+    marginBottom: Metrics.space.small,
+  },
   container: {
+    backgroundColor: Colors.white,
     flex: 1,
     padding: Metrics.space.normal,
-    backgroundColor: Colors.white,
   },
   space: {
     flex: 1,
-  },
-  btn: {
-    marginBottom: Metrics.space.small,
   },
 })
 

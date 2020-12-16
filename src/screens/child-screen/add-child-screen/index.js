@@ -29,15 +29,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: Metrics.space.small,
   },
-  form: {
-    paddingHorizontal: Metrics.space.medium,
-    paddingBottom: Metrics.space.small,
-  },
   btnDelete: {
     marginTop: Metrics.space.medium,
   },
   btnSubmit: {
     marginTop: Metrics.space.medium,
+  },
+  form: {
+    paddingBottom: Metrics.space.small,
+    paddingHorizontal: Metrics.space.medium,
   },
 })
 

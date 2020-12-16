@@ -14,6 +14,7 @@ const basicColors = {
   whiteCatskill: '#E4E9F2',
   blueTropical: '#B6DDF4',
   baliHai: '#8F9BB3',
+  brilliantRose: '#F652A0',
 }
 
 export const Colors = (() => {

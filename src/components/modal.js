@@ -11,15 +11,15 @@ import { Colors, Metrics } from '../theme'
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.blackOpacity(0.5),
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: Colors.blackOpacity(0.5),
   },
   content: {
-    marginHorizontal: Metrics.space.normal,
-    padding: Metrics.space.normal,
     backgroundColor: Colors.white,
     borderRadius: Metrics.space.xs,
+    marginHorizontal: Metrics.space.normal,
+    padding: Metrics.space.normal,
   },
 })
 

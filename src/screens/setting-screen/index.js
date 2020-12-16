@@ -23,16 +23,9 @@ import { Metrics, Colors } from '../../theme'
 import { MAX_BIRTHDAY, MIN_BIRTHDAY } from '../../utils/date'
 
 const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: Metrics.space.medium,
-    marginBottom: Metrics.space.medium,
-  },
   avatarContainer: {
     alignItems: 'center',
     marginVertical: Metrics.space.small,
-  },
-  form: {
-    paddingBottom: Metrics.space.small,
   },
   btn: {
     justifyContent: 'space-between',
@@ -41,18 +34,25 @@ const styles = StyleSheet.create({
   btnSubmit: {
     marginTop: Metrics.space.medium,
   },
-  textEmail: {
-    marginLeft: Metrics.space.xs,
+  content: {
+    marginBottom: Metrics.space.medium,
+    paddingHorizontal: Metrics.space.medium,
   },
   emailWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     backgroundColor: Colors.whiteLilac,
     borderColor: Colors.whiteCatskill,
     borderRadius: 4,
     borderWidth: 1,
-    paddingVertical: 7,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingHorizontal: 8,
+    paddingVertical: 7,
+  },
+  form: {
+    paddingBottom: Metrics.space.small,
+  },
+  textEmail: {
+    marginLeft: Metrics.space.xs,
   },
 })
 

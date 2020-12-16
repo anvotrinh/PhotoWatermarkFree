@@ -24,14 +24,17 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: Metrics.space.medium,
   },
+  login: {
+    color: Colors.primary,
+  },
   loginWrapper: {
-    flexWrap: 'wrap',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     marginTop: Metrics.space.small,
   },
-  login: {
-    color: Colors.primary,
+  space: {
+    flex: 1,
   },
 })
 
@@ -146,7 +149,7 @@ export default observer(() => {
             autoCapitalize='none'
           />
         </FormRow>
-        <View style={{ flex: 1 }} />
+        <View style={styles.space} />
         <Button text={i.get('register')} size='giant' onPress={handleSubmit} />
         <View style={styles.loginWrapper}>
           <Text category='s2'>

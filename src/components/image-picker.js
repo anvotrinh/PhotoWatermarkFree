@@ -10,15 +10,15 @@ import { openPicker, openCamera } from '../utils/image-picker'
 
 const styles = StyleSheet.create({
   btn: {
-    marginVertical: Metrics.space.xs,
     justifyContent: 'space-between',
+    marginVertical: Metrics.space.xs,
   },
   btnCancel: {
     marginVertical: Metrics.space.xs,
   },
   title: {
-    textAlign: 'center',
     marginBottom: Metrics.space.xs,
+    textAlign: 'center',
   },
 })
 

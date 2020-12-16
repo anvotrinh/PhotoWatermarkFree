@@ -2,22 +2,23 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { Colors } from '../../theme'
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: Colors.baliHai,
+    flexDirection: 'row',
     height: 60,
-    backgroundColor: '#2089DC',
-  },
-  title: {
-    position: 'absolute',
-    color: 'white',
-    fontSize: 25,
+    justifyContent: 'center',
   },
   space: {
     flex: 1,
+  },
+  title: {
+    color: Colors.white,
+    fontSize: 25,
+    position: 'absolute',
   },
 })
 

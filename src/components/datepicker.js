@@ -9,19 +9,19 @@ import { formatDate } from '../utils/date'
 
 const styles = StyleSheet.create({
   btn: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: Metrics.space.medium,
     backgroundColor: Colors.whiteLilac,
     borderColor: Colors.whiteCatskill,
-    borderWidth: 1,
-    height: 48,
     borderRadius: Metrics.space.xs,
+    borderWidth: 1,
+    flexDirection: 'row',
+    height: 48,
+    justifyContent: 'space-between',
+    paddingHorizontal: Metrics.space.medium,
   },
   textBtn: {
-    marginTop: 4,
     marginRight: Metrics.space.xs,
+    marginTop: 4,
   },
 })
 

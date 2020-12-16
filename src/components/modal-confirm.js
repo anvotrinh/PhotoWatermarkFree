@@ -7,16 +7,16 @@ import { Modal } from './modal'
 import { Metrics } from '../theme'
 
 const styles = StyleSheet.create({
-  title: {
-    textAlign: 'center',
+  btn: {
+    flex: 1,
+    marginHorizontal: Metrics.space.xs,
   },
   btnWrapper: {
     flexDirection: 'row',
     marginTop: Metrics.space.medium,
   },
-  btn: {
-    flex: 1,
-    marginHorizontal: Metrics.space.xs,
+  title: {
+    textAlign: 'center',
   },
 })
 

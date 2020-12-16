@@ -9,19 +9,19 @@ import { CommonStyles, Colors } from '../theme'
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    height: 60,
     backgroundColor: Colors.white,
+    flexDirection: 'row',
+    height: 60,
+    justifyContent: 'space-between',
     ...CommonStyles.shadow,
     zIndex: 1,
   },
   titleWrapper: {
     ...StyleSheet.absoluteFill,
-    zIndex: -1,
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: -1,
   },
 })
 

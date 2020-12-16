@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFill,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: Colors.whiteOpacity(0.5),
+    justifyContent: 'center',
     zIndex: 1,
   },
 })

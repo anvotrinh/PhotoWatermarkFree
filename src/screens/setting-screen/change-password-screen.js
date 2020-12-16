@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: Metrics.space.medium,
   },
+  space: {
+    flex: 1,
+  },
 })
 
 const formInitialValues = {
@@ -91,7 +94,7 @@ const renderForm = ({
           autoCapitalize='none'
         />
       </FormRow>
-      <View style={{ flex: 1 }} />
+      <View style={styles.space} />
       <Button text={i.get('submit')} size='giant' onPress={handleSubmit} />
     </View>
   )

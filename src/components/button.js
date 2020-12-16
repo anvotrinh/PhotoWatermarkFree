@@ -24,10 +24,10 @@ const sizePadding = {
 
 const styles = StyleSheet.create({
   btn: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: 4,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   text: {
     textAlign: 'center',

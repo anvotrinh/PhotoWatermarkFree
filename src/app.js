@@ -6,6 +6,12 @@ import { FlashMessage } from './components'
 import { RootStoreProvider } from './models/root-store'
 import { setupRootStore } from './models/root-store/setup-root-store'
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})
+
 export default () => {
   const [rootStore, setRootStore] = useState()
   useEffect(() => {
@@ -18,7 +24,7 @@ export default () => {
 
   return (
     <RootStoreProvider value={rootStore}>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
         <StatefulNavigator />
         <FlashMessage position='top' />
       </SafeAreaView>

@@ -8,16 +8,16 @@ import { Colors, Metrics } from '../theme'
 import { Modal } from './modal'
 
 const styles = StyleSheet.create({
-  modalPicker: {
-    backgroundColor: Colors.white,
-  },
-  modalBtnWrapper: {
-    flexDirection: 'row',
-    backgroundColor: Colors.white,
-  },
   modalBtn: {
     flex: 1,
     marginHorizontal: Metrics.space.xs,
+  },
+  modalBtnWrapper: {
+    backgroundColor: Colors.white,
+    flexDirection: 'row',
+  },
+  modalPicker: {
+    backgroundColor: Colors.white,
   },
 })
 

@@ -10,30 +10,30 @@ import { useStores } from '../../../models/root-store'
 import { changeOrderUp, changeOrderDown } from '../../../utils/array'
 
 const styles = StyleSheet.create({
+  btnAdd: {
+    backgroundColor: Colors.primary,
+    borderRadius: Metrics.space.big,
+    bottom: Metrics.space.normal,
+    height: Metrics.space.xLarge,
+    position: 'absolute',
+    right: Metrics.space.normal,
+    width: Metrics.space.xLarge,
+  },
   container: {
     flex: 1,
   },
   header: {
+    backgroundColor: Colors.grayOpacity(0.3),
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: Metrics.space.small,
-    backgroundColor: Colors.grayOpacity(0.3),
   },
   headerLeft: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
   },
   headerTitle: {
     marginLeft: Metrics.space.xs,
-  },
-  btnAdd: {
-    position: 'absolute',
-    width: Metrics.space.xLarge,
-    height: Metrics.space.xLarge,
-    right: Metrics.space.normal,
-    bottom: Metrics.space.normal,
-    borderRadius: Metrics.space.big,
-    backgroundColor: Colors.primary,
   },
 })
 

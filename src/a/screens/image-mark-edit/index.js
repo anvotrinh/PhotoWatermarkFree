@@ -21,15 +21,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   progress: {
-    marginTop: 20,
     alignSelf: 'center',
+    marginTop: 20,
+  },
+  textSuccess: {
+    alignSelf: 'center',
+    marginBottom: 30,
   },
   webView: {
     display: 'none',
-  },
-  textSuccess: {
-    marginBottom: 30,
-    alignSelf: 'center',
   },
 })
 

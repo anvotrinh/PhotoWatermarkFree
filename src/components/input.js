@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
     borderColor: Colors.whiteCatskill,
     borderRadius: 4,
     borderWidth: 1,
-    minHeight: Metrics.space.big,
-    paddingVertical: 7,
-    paddingHorizontal: 8,
     fontSize: 15,
+    minHeight: Metrics.space.big,
+    paddingHorizontal: 8,
+    paddingVertical: 7,
   },
   inputFocus: {
     backgroundColor: Colors.white,

@@ -25,35 +25,38 @@ function isMissingPermissionMessage(message) {
 }
 
 const styles = StyleSheet.create({
+  btnUploadLogo: {
+    marginLeft: 10,
+    width: '50%',
+  },
   container: {
     flex: 1,
   },
-  overlayContainer: {
-    padding: 20,
+  inputIcon: {
+    marginRight: 10,
   },
-  overlayBtn: {
-    marginTop: 20,
-  },
-  logoTitleWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  logo: {
+    aspectRatio: 2.65,
+    borderWidth: 1,
     marginLeft: 10,
+    marginTop: 10,
+    resizeMode: 'stretch',
+    width: '50%',
   },
   logoTitle: {
     fontSize: 18,
     marginLeft: 13,
   },
-  logo: {
-    resizeMode: 'stretch',
-    width: '50%',
-    aspectRatio: 2.65,
+  logoTitleWrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
     marginLeft: 10,
-    marginTop: 10,
-    borderWidth: 1,
   },
-  btnUploadLogo: {
-    width: '50%',
-    marginLeft: 10,
+  overlayBtn: {
+    marginTop: 20,
+  },
+  overlayContainer: {
+    padding: 20,
   },
 })
 
@@ -187,7 +190,6 @@ export default ({ navigation }) => {
           label='Prefix text'
           value={markPrefix}
           onChangeText={setMarkPrefix}
-          style={{ marginLeft: 10 }}
         />
       )}
       <CheckBox
@@ -202,7 +204,7 @@ export default ({ navigation }) => {
             onChangeText={setPrice}
             placeholder='Your text'
             leftIcon={{ type: 'ionicon', name: 'ios-pricetag' }}
-            leftIconContainerStyle={{ marginRight: 10 }}
+            leftIconContainerStyle={styles.inputIcon}
           />
           <View style={styles.logoTitleWrapper}>
             <Icon name='md-image' size={25} />
@@ -227,7 +229,7 @@ export default ({ navigation }) => {
           onChangeText={setLogoBase64Url}
           placeholder='json URL with format { base64: ... }'
           leftIcon={{ type: 'foundation', name: 'web' }}
-          leftIconContainerStyle={{ marginRight: 10 }}
+          leftIconContainerStyle={styles.inputIcon}
         />
         <Button title='Submit' onPress={handleLogoBase64Submit} />
       </Modal>

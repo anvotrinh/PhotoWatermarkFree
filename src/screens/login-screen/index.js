@@ -18,22 +18,25 @@ import {
 import { Metrics, Colors } from '../../theme'
 
 const styles = StyleSheet.create({
-  form: {
-    flex: 1,
-    padding: Metrics.space.medium,
-  },
   btnForgotPassword: {
     justifyContent: 'flex-end',
     paddingRight: 0,
   },
-  registerWrapper: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: Metrics.space.small,
+  form: {
+    flex: 1,
+    padding: Metrics.space.medium,
   },
   registerNow: {
     color: Colors.primary,
+  },
+  registerWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: Metrics.space.small,
+  },
+  space: {
+    flex: 1,
   },
 })
 
@@ -101,7 +104,7 @@ export default observer(() => {
           status='basic'
           style={styles.btnForgotPassword}
         />
-        <View style={{ flex: 1 }} />
+        <View style={styles.space} />
         <Button text={i.get('login')} size='giant' onPress={handleSubmit} />
         <View style={styles.registerWrapper}>
           <Text category='s2'>

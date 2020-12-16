@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   item: {
+    borderColor: Colors.primary,
+    height: Metrics.space.big,
     marginHorizontal: Metrics.space.small,
     width: Metrics.space.big,
-    height: Metrics.space.big,
-    borderColor: Colors.primary,
   },
 })
 

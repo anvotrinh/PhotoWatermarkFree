@@ -5,18 +5,19 @@ import {
   Modal as RNModal,
   TouchableWithoutFeedback,
 } from 'react-native'
+import { Colors } from '../../theme'
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.blackOpacity(0.5),
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   content: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
     marginHorizontal: 20,
     padding: 20,
-    backgroundColor: 'white',
-    borderRadius: 10,
   },
 })
 

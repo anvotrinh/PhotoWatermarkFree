@@ -9,13 +9,16 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: Metrics.space.xs,
   },
-  labelWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  icon: {
+    marginTop: 5,
   },
   label: {
-    marginRight: Metrics.space.small,
     marginBottom: Metrics.space.xs,
+    marginRight: Metrics.space.small,
+  },
+  labelWrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 })
 
@@ -32,7 +35,7 @@ export const FormRow = ({
       {iconPack && iconName && <Icon pack={iconPack} name={iconName} />}
       {label && (
         <Text
-          style={[styles.label, iconPack && iconName && { marginTop: 5 }]}
+          style={[styles.label, iconPack && iconName && styles.icon]}
         >{`${label}:`}</Text>
       )}
     </View>

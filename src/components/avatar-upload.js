@@ -8,9 +8,9 @@ import { ImagePicker } from './image-picker'
 
 const styles = StyleSheet.create({
   btnEdit: {
+    bottom: 0,
     position: 'absolute',
     right: 0,
-    bottom: 0,
   },
 })
 

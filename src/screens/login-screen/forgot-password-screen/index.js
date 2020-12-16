@@ -22,14 +22,17 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: Metrics.space.medium,
   },
+  registerNow: {
+    color: Colors.primary,
+  },
   registerWrapper: {
-    flexWrap: 'wrap',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     marginTop: Metrics.space.small,
   },
-  registerNow: {
-    color: Colors.primary,
+  space: {
+    flex: 1,
   },
 })
 
@@ -73,7 +76,7 @@ export default observer(() => {
             autoCapitalize='none'
           />
         </FormRow>
-        <View style={{ flex: 1 }} />
+        <View style={styles.space} />
         <Button text={i.get('submit')} size='giant' onPress={handleSubmit} />
         <View style={styles.registerWrapper}>
           <Text category='s2'>
