@@ -1,53 +1,56 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Button} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react'
+import { observer } from 'mobx-react-lite'
+import { StyleSheet, View } from 'react-native'
+
+import { Button } from './button'
+import { Text } from './text'
+import { useStores } from '../models/root-store'
+import { CommonStyles, Colors } from '../theme'
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     height: 60,
-    backgroundColor: '#2089DC',
+    backgroundColor: Colors.white,
+    ...CommonStyles.shadow,
+    zIndex: 1,
   },
-  title: {
-    position: 'absolute',
-    color: 'white',
-    fontSize: 25,
+  titleWrapper: {
+    ...StyleSheet.absoluteFill,
+    zIndex: -1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  space: {
-    flex: 1,
-  },
-});
+})
 
-export const Header = ({navigation, title, hasBack = true, onNext}) => {
+export const Header = observer(({ title, onBack, hasBack = true }) => {
+  const {
+    navigationStore: { goBack },
+  } = useStores()
+
   const handleBack = () => {
-    navigation.goBack();
-  };
+    if (onBack) {
+      onBack()
+      return
+    }
+    goBack()
+  }
 
   return (
     <View style={styles.container}>
-      {hasBack ? (
+      {hasBack && (
         <Button
-          icon={<Icon name="ios-arrow-back" size={40} color="white" />}
           onPress={handleBack}
-          type="clear"
+          ghost
+          iconPack='ant-design'
+          iconName='arrowleft'
         />
-      ) : (
-        <View />
       )}
-      <View style={styles.space} />
-      {onNext ? (
-        <Button
-          icon={<Icon name="ios-arrow-forward" size={40} color="white" />}
-          onPress={onNext}
-          type="clear"
-        />
-      ) : (
-        <View />
-      )}
-      <Text style={styles.title}>{title}</Text>
+      <View style={styles.titleWrapper}>
+        <Text category='h5'>{title}</Text>
+      </View>
     </View>
-  );
-};
+  )
+})

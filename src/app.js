@@ -1,36 +1,27 @@
-import React, {useEffect} from 'react';
-import {SafeAreaView, StyleSheet, LogBox} from 'react-native';
-import messaging from '@react-native-firebase/messaging';
-import 'react-native-gesture-handler';
+import React, { useState, useEffect } from 'react'
+import { SafeAreaView } from 'react-native'
 
-import AppNavigator from './app-navigator';
-
-LogBox.ignoreLogs(['AsyncStorage']);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-async function requestUserPermission() {
-  const authStatus = await messaging().requestPermission();
-  const enabled =
-    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-
-  if (enabled) {
-    console.log('Authorization status:', authStatus);
-  }
-}
+import { StatefulNavigator } from './navigation'
+import { FlashMessage } from './components'
+import { RootStoreProvider } from './models/root-store'
+import { setupRootStore } from './models/root-store/setup-root-store'
 
 export default () => {
+  const [rootStore, setRootStore] = useState()
   useEffect(() => {
-    requestUserPermission();
-  }, []);
+    setupRootStore().then(setRootStore)
+  }, [])
+
+  if (!rootStore) {
+    return null
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <AppNavigator />
-    </SafeAreaView>
-  );
-};
+    <RootStoreProvider value={rootStore}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatefulNavigator />
+        <FlashMessage position='top' />
+      </SafeAreaView>
+    </RootStoreProvider>
+  )
+}
