@@ -4,8 +4,8 @@ import { observer } from 'mobx-react-lite'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 
-import i from '../../../i18n'
-import { useStores } from '../../../models/root-store'
+import i from '../../i18n'
+import { useStores } from '../../models/root-store'
 import {
   Button,
   Input,
@@ -14,8 +14,8 @@ import {
   LoadingOverlay,
   LayoutKeyboardDismiss,
   FormRow,
-} from '../../../components'
-import { Metrics, Colors } from '../../../theme'
+} from '../../components'
+import { Metrics, Colors } from '../../theme'
 
 const styles = StyleSheet.create({
   form: {
