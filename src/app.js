@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
+import messaging from '@react-native-firebase/messaging'
 
 import { StatefulNavigator } from './navigation'
 import { FlashMessage } from './components'
@@ -12,10 +13,23 @@ const styles = StyleSheet.create({
   },
 })
 
+async function requestUserPermission() {
+  const authStatus = await messaging().requestPermission()
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL
+
+  if (enabled) {
+    // eslint-disable-next-line
+    console.log('Authorization status:', authStatus)
+  }
+}
+
 export default () => {
   const [rootStore, setRootStore] = useState()
   useEffect(() => {
     setupRootStore().then(setRootStore)
+    requestUserPermission()
   }, [])
 
   if (!rootStore) {

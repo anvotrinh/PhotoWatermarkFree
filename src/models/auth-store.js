@@ -1,7 +1,7 @@
 import { flow, getEnv, getParent, types } from 'mobx-state-tree'
 import i from '../i18n'
 import { URLS } from '../services/api'
-import { saveLocalToken, getLocalToken } from '../utils/local-token'
+import { getLocalItem, saveLocalItem, TOKEN } from '../utils/local-storage'
 
 export const AuthStoreModel = types
   .model('AuthStore', {
@@ -38,7 +38,7 @@ export const AuthStoreModel = types
         const { token } = result
         self.token = token
         self.api.setup(token)
-        saveLocalToken(token)
+        saveLocalItem(TOKEN, token)
         yield self.userStore.getProfile()
         self.navigationStore.replace({ routeName: 'Home' })
       }
@@ -65,7 +65,7 @@ export const AuthStoreModel = types
       }
     }),
     setup: flow(function* () {
-      const token = yield getLocalToken()
+      const token = yield getLocalItem(TOKEN)
       if (token) {
         self.token = token
         self.api.setup(token)
@@ -77,7 +77,7 @@ export const AuthStoreModel = types
     }),
     logout() {
       self.rootStore.reset()
-      saveLocalToken('')
+      saveLocalItem(TOKEN, '')
       self.navigationStore.popToTop()
       self.navigationStore.replace({ routeName: 'AuthHome' })
     },
