@@ -4,6 +4,7 @@ import { AuthStoreModel } from '../auth-store'
 import { UserStoreModel } from '../user-store'
 import { NavigationStoreModel } from '../navigation-store'
 import { ChildStoreModel } from '../child-store'
+import { WatermarkStoreModel } from '../watermark-store'
 
 export const RootStoreModel = types
   .model('RootStore')
@@ -12,6 +13,7 @@ export const RootStoreModel = types
     authStore: types.optional(AuthStoreModel, {}),
     userStore: types.optional(UserStoreModel, {}),
     childStore: types.optional(ChildStoreModel, {}),
+    watermarkStore: types.optional(WatermarkStoreModel, {}),
   })
   .actions(self => {
     let initialState = {}

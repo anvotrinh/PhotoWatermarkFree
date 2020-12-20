@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export const Header = observer(({ title, onBack, hasBack = true }) => {
+export const Header = observer(({ title, onBack, hasBack = true, onNext }) => {
   const {
     navigationStore: { goBack },
   } = useStores()
@@ -40,17 +40,27 @@ export const Header = observer(({ title, onBack, hasBack = true }) => {
 
   return (
     <View style={styles.container}>
-      {hasBack && (
+      {hasBack ? (
         <Button
           onPress={handleBack}
           ghost
           iconPack='ant-design'
           iconName='arrowleft'
         />
+      ) : (
+        <View />
       )}
       <View style={styles.titleWrapper}>
         <Text category='h5'>{title}</Text>
       </View>
+      {onNext && (
+        <Button
+          onPress={onNext}
+          ghost
+          iconPack='ant-design'
+          iconName='arrowright'
+        />
+      )}
     </View>
   )
 })

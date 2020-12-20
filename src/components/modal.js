@@ -23,10 +23,18 @@ const styles = StyleSheet.create({
   },
 })
 
-export const Modal = ({ visible, children }) => {
+export const Modal = ({ visible, children, onBackdropPress }) => {
+  const handleBackdropPress = () => {
+    Keyboard.dismiss()
+    onBackdropPress && onBackdropPress()
+  }
+
   return (
     <RNModal transparent visible={visible} hardwareAccelerated>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <TouchableWithoutFeedback
+        onPress={handleBackdropPress}
+        accessible={false}
+      >
         <View style={styles.container}>
           <View style={styles.content}>{children}</View>
         </View>

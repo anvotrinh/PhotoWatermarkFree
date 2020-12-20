@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export const CheckBox = ({ text, checked, onChange, style }) => {
+export const CheckBox = ({ text, checked, onChange, style, textStyle }) => {
   return (
     <TouchableOpacity
       style={[styles.checkBox, StyleSheet.flatten(style)]}
@@ -56,7 +56,9 @@ export const CheckBox = ({ text, checked, onChange, style }) => {
           />
         )}
       </View>
-      <Text style={styles.checkBoxLabel}>{text}</Text>
+      <Text style={[styles.checkBoxLabel, StyleSheet.flatten(textStyle)]}>
+        {text}
+      </Text>
     </TouchableOpacity>
   )
 }

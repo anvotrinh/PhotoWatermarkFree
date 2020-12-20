@@ -29,13 +29,19 @@ export const FormRow = ({
   iconName,
   error,
   errorCategory,
+  containerStyle,
+  labelStyle,
 }) => (
-  <View style={styles.container}>
+  <View style={[styles.container, StyleSheet.flatten(containerStyle)]}>
     <View style={styles.labelWrapper}>
       {iconPack && iconName && <Icon pack={iconPack} name={iconName} />}
       {label && (
         <Text
-          style={[styles.label, iconPack && iconName && styles.icon]}
+          style={[
+            styles.label,
+            iconPack && iconName && styles.icon,
+            StyleSheet.flatten(labelStyle),
+          ]}
         >{`${label}:`}</Text>
       )}
     </View>

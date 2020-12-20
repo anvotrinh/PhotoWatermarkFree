@@ -17,6 +17,8 @@ import AddChild from '../screens/child-screen/add-child-screen'
 import Setting from '../screens/setting-screen'
 import ChangePassword from '../screens/setting-screen/change-password-screen'
 
+import Watermark from '../screens/watermark-screen'
+
 import { Colors } from '../theme'
 import TabIcon from './tab-icon'
 
@@ -37,7 +39,7 @@ const tabOptions = {
 
 const Home = createBottomTabNavigator(
   {
-    Print: Setting,
+    Print: Watermark,
     Camera: Setting,
     Setting,
   },
