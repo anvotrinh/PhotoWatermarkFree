@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start --reset-cache",
     "lint": "eslint src/. --ext .js --fix",
+    "postinstall": "husky install",
     "deploy:internal": "cd android && bundle exec fastlane internal && cd .. && cd ios && bundle exec fastlane internal && cd ..",
     "deploy:release": "cd android && bundle exec fastlane release && cd .. && cd ios && bundle exec fastlane release && cd .."
   },
@@ -52,6 +53,7 @@
     "eslint": "^6.5.1",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react-native": "^3.10.0",
+    "husky": "^5.0.6",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.57.0",
     "prettier": "2.2.1",
