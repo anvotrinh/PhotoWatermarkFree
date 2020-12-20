@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { StyleSheet, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 
+import i from '../../../i18n'
 import { getResolutionAsync } from '../../../utils/image'
 import { Slider, Header, Layout, Text } from '../../../components'
 import { Colors, Metrics } from '../../../theme'
@@ -80,19 +81,23 @@ export default observer(({ onNext, onBack }) => {
 
   return (
     <Layout>
-      <Header title='Adjust Position' onNext={onNext} onBack={onBack} />
+      <Header
+        title={i.get('adjust_position')}
+        onNext={onNext}
+        onBack={onBack}
+      />
       <Slider
-        text='X Value'
+        text={i.get('x_value')}
         value={xPercent}
         onValueChange={value => updateData({ xPercent: value })}
       />
       <Slider
-        text='Y Value'
+        text={i.get('y_value')}
         value={yPercent}
         onValueChange={value => updateData({ yPercent: value })}
       />
       <Slider
-        text='Font size'
+        text={i.get('font_size')}
         value={fontSize}
         onValueChange={value => updateData({ fontSize: value })}
         minimumValue={10}

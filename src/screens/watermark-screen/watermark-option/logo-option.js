@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import ImagePicker from 'react-native-image-crop-picker'
 import RNFS from 'react-native-fs'
 
+import i from '../../../i18n'
 import { useStores } from '../../../models/root-store'
 import {
   Modal,
@@ -94,7 +95,7 @@ export default observer(({ mode, setMode, setErrorMessage }) => {
   return (
     <View style={styles.container}>
       <CheckBox
-        text='Mark by text'
+        text={i.get('mark_by_logo')}
         style={styles.checkBox}
         textStyle={styles.textCheckBox}
         checked={mode === 'logo'}
@@ -102,22 +103,20 @@ export default observer(({ mode, setMode, setErrorMessage }) => {
       />
       {mode === 'logo' && (
         <>
-          <FormRow label='Title' labelStyle={styles.prefixTextLabel}>
+          <FormRow label={i.get('title')} labelStyle={styles.prefixTextLabel}>
             <Input
               value={title}
               onChangeText={title => updateData({ title })}
-              placeholder='Your text'
+              placeholder={i.get('title_placeholder')}
             />
           </FormRow>
           <View style={styles.logoTitleWrapper}>
             <Icon name='md-image' size={25} />
-            <Text style={styles.logoImageLabel}>
-              Logo Image (ratio 2.65 : 1):
-            </Text>
+            <Text style={styles.logoImageLabel}>{i.get('logo_label')}</Text>
           </View>
           {logo && <Image source={{ uri: logo }} style={styles.logo} />}
           <Button
-            text=' Choose Other Logo'
+            text={i.get('choose_other_logo')}
             style={styles.btnUploadLogo}
             onPress={handleChooseLogo}
             onLongPress={() => setBase64ModalVisible(true)}
@@ -131,10 +130,10 @@ export default observer(({ mode, setMode, setErrorMessage }) => {
         <Input
           value={logoBase64Url}
           onChangeText={setLogoBase64Url}
-          placeholder='json URL with format { base64: ... }'
+          placeholder={i.get('logo_base64_url_placeholder')}
         />
         <Button
-          text='Submit'
+          text={i.get('submit')}
           onPress={handleLogoBase64Submit}
           style={styles.btnLogoBase64Submit}
         />

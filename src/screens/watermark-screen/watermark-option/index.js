@@ -3,6 +3,7 @@ import { StyleSheet, View, Linking } from 'react-native'
 import { observer } from 'mobx-react-lite'
 import ImagePicker from 'react-native-image-crop-picker'
 
+import i from '../../../i18n'
 import { toFullLocalPath } from '../../../utils/file'
 import { useStores } from '../../../models/root-store'
 import { Modal, Text, Button, Layout, Header } from '../../../components'
@@ -65,7 +66,11 @@ export default observer(({ setScreen }) => {
 
   return (
     <Layout>
-      <Header title='choose mode' onNext={handleNext} hasBack={false} />
+      <Header
+        title={i.get('choose_mode')}
+        onNext={handleNext}
+        hasBack={false}
+      />
       <OrderOption mode={mode} setMode={setMode} />
       <LogoOption
         mode={mode}
@@ -78,10 +83,10 @@ export default observer(({ setScreen }) => {
       >
         {isMissingPermissionMessage(errorMessage) ? (
           <View style={styles.errorModalContainer}>
-            <Text h4>Need Permission</Text>
-            <Text>Please grant Photo permission to use PhotoWatermark.</Text>
+            <Text h4>{i.get('need_permission')}</Text>
+            <Text>{i.get('need_permission_message')}</Text>
             <Button
-              text='PhotoWatermark Settings'
+              text={i.get('app_settings')}
               iconPack='ionicons'
               iconName='ios-settings'
               iconSize={15}

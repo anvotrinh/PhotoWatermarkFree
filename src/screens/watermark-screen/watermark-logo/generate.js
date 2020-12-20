@@ -6,6 +6,7 @@ import RNFS from 'react-native-fs'
 import CameraRoll from '@react-native-community/cameraroll'
 import * as Progress from 'react-native-progress'
 
+import i from '../../../i18n'
 import htmlRenderer from './generate-html'
 import { generateTempPath } from '../../../utils/file'
 import { Header, Modal, Button, Text, Layout } from '../../../components'
@@ -80,7 +81,7 @@ export default observer(({ onSuccess }) => {
 
   return (
     <Layout>
-      <Header title='Generate Photo' hasBack={false} />
+      <Header title={i.get('generate_photo')} hasBack={false} />
       <Progress.Circle
         size={150}
         progress={imgIndex / imgUris.length}
@@ -97,10 +98,8 @@ export default observer(({ onSuccess }) => {
         containerStyle={styles.webView}
       />
       <Modal visible={successVisible}>
-        <Text style={styles.textSuccess}>
-          Done, please check watermarked photo in Album
-        </Text>
-        <Button text='OK' onPress={handleSuccess} />
+        <Text style={styles.textSuccess}>{i.get('generate_success')}</Text>
+        <Button text={i.get('ok')} onPress={handleSuccess} />
       </Modal>
     </Layout>
   )

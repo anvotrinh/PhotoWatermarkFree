@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { observer } from 'mobx-react-lite'
 
+import i from '../../../i18n'
 import { useStores } from '../../../models/root-store'
 import { Input, CheckBox, FormRow } from '../../../components'
 import { Colors, Metrics } from '../../../theme'
@@ -34,16 +35,18 @@ export default observer(({ mode, setMode }) => {
   return (
     <View style={styles.container}>
       <CheckBox
-        text='Mark by order number'
+        text={i.get('mark_by_order')}
         style={styles.checkBox}
         textStyle={styles.textCheckBox}
         checked={mode === 'order'}
         onChange={() => setMode('order')}
       />
       {mode === 'order' && (
-        <FormRow label='Prefix text' labelStyle={styles.prefixTextLabel}>
+        <FormRow
+          label={i.get('prefix_text')}
+          labelStyle={styles.prefixTextLabel}
+        >
           <Input
-            label='Prefix text'
             value={orderPrefix}
             onChangeText={orderPrefix => updateData({ orderPrefix })}
           />

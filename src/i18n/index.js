@@ -36,6 +36,9 @@ const viDictionary = {
   current_password: 'Mật khẩu hiện tại',
   current_password_placeholder: 'Nhập mật khẩu hiện tại',
   current_password_required: 'Thiếu mật khẩu hiện tại',
+
+  title: 'Title',
+  title_placeholder: 'Input title',
   // Login
   login: 'Đăng Nhập',
   forgot_password: 'Quên mật khẩu',
@@ -54,6 +57,23 @@ const viDictionary = {
   change_password: 'Đổi mật khẩu',
   new_password: 'Mật khẩu mới',
   confirm_new_password: 'Xác nhận mật khẩu mới',
+  // Watermark
+  generate_photo: 'Tạo Ảnh',
+  generate_success: 'Hoàn thành, hình đã được tạo trong Album!',
+  adjust_position: 'Chỉnh Vị Trí',
+  x_value: 'Vị trí ngang',
+  y_value: 'Vị trí dọc',
+  font_size: 'Cỡ chữ',
+  choose_mode: 'Chọn chế độ',
+  need_permission: 'Cần quyền truy cập',
+  need_permission_message: 'Hãy cho phép ứng dụng quyền truy cập hình ảnh.',
+  mark_by_logo: 'Gán logo',
+  logo_label: 'Hình Logo (tỉ lệ 2.65 : 1):',
+  choose_other_logo: ' Chọn hình logo khác',
+  logo_base64_url_placeholder: 'json URL với format { base64: ... }',
+  mark_by_order: 'Đánh số',
+  prefix_text: 'Chữ phía trước',
+  app_settings: ' PhotoWatermark Cài Đặt',
 }
 
 const enDictionary = {
@@ -93,6 +113,9 @@ const enDictionary = {
   current_password: 'Current password',
   current_password_placeholder: 'Input current password',
   current_password_required: 'Current password required',
+
+  title: 'Title',
+  title_placeholder: 'Input title',
   // Login
   login: 'Login',
   dont_have_account: "Don't have account? ",
@@ -111,6 +134,24 @@ const enDictionary = {
   change_password: 'Change Password',
   new_password: 'New password',
   confirm_new_password: 'Confirm new password',
+  // Watermark
+  generate_photo: 'Generate Photo',
+  generate_success: 'Done, please check watermarked photo in Album',
+  adjust_position: 'Adjust Position',
+  x_value: 'X Value',
+  y_value: 'Y Value',
+  font_size: 'Font size',
+  choose_mode: 'Choose Mode',
+  need_permission: 'Need Permission',
+  need_permission_message:
+    'Please grant Photo permission to use PhotoWatermark.',
+  mark_by_logo: 'Mark by logo',
+  logo_label: 'Logo Image (ratio 2.65 : 1):',
+  choose_other_logo: ' Choose Other Logo',
+  logo_base64_url_placeholder: 'json URL with format { base64: ... }',
+  mark_by_order: 'Mark by order number',
+  prefix_text: 'Prefix text',
+  app_settings: ' PhotoWatermark Settings',
 }
 
 class I18n {
