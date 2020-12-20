@@ -8,7 +8,10 @@ export const WatermarkStoreModel = types
     logo: logoBase64,
     title: 'Your text',
     orderPrefix: 'Photo',
-    imgUris: types.array(types.string),
+    imgUris: types.optional(types.array(types.string), []),
+    xPercent: 0,
+    yPercent: 0,
+    fontSize: 20,
   })
   .views(self => ({
     get api() {

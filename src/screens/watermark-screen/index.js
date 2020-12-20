@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react-lite'
 
-import i from '../../i18n'
 import WatermarkOption from './watermark-option'
-import { Header, Layout } from '../../components'
-import { StyleSheet } from 'react-native'
+import WatermarkOrder from './watermark-order'
+import WatermarkLogo from './watermark-logo'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})
-
-export default observer(() => {
-  return <WatermarkOption />
+export default observer(({ screen = 'option' }) => {
+  const [currentScreen, setCurrentScreen] = useState(screen)
+  switch (currentScreen) {
+    case 'option':
+      return <WatermarkOption setScreen={setCurrentScreen} />
+    case 'order':
+      return <WatermarkOrder setScreen={setCurrentScreen} />
+    case 'logo':
+      return <WatermarkLogo setScreen={setCurrentScreen} />
+  }
 })

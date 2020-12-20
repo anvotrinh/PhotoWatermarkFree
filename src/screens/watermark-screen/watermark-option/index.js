@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export default observer(({ onNext }) => {
+export default observer(({ setScreen }) => {
   const {
     watermarkStore: { loadData, updateData },
   } = useStores()
@@ -54,7 +54,7 @@ export default observer(({ onNext }) => {
       })
       const imgUris = images.map(i => toFullLocalPath(i.path))
       updateData({ imgUris })
-      onNext && onNext()
+      setScreen(mode)
     } catch (e) {
       if (e.message === 'User cancelled image selection') {
         return

@@ -15,6 +15,7 @@ const basicColors = {
   blueTropical: '#B6DDF4',
   baliHai: '#8F9BB3',
   brilliantRose: '#F652A0',
+  deepBlush: '#E16A88',
 }
 
 export const Colors = (() => {
