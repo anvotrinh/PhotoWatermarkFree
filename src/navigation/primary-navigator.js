@@ -49,15 +49,13 @@ const Home = createBottomTabNavigator(
 const StackNavigator = createStackNavigator(
   {
     Loading,
+    Watermark,
     AuthHome,
     Register,
     Login,
     ForgotPassword,
-
-    AddChild,
-
     Home,
-
+    AddChild,
     ChangePassword,
   },
   {

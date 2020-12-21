@@ -1,7 +1,12 @@
 import { flow, getEnv, getParent, types } from 'mobx-state-tree'
 import i from '../i18n'
 import { URLS } from '../services/api'
-import { getLocalItem, saveLocalItem, TOKEN } from '../utils/local-storage'
+import {
+  getLocalItem,
+  saveLocalItem,
+  TOKEN,
+  SHOP_MODE,
+} from '../utils/local-storage'
 
 export const AuthStoreModel = types
   .model('AuthStore', {
@@ -66,7 +71,10 @@ export const AuthStoreModel = types
     }),
     setup: flow(function* () {
       const token = yield getLocalItem(TOKEN)
-      if (token) {
+      const shopMode = yield getLocalItem(SHOP_MODE)
+      if (!shopMode) {
+        self.navigationStore.replace({ routeName: 'Watermark' })
+      } else if (token) {
         self.token = token
         self.api.setup(token)
         yield self.userStore.getProfile()
@@ -81,4 +89,11 @@ export const AuthStoreModel = types
       self.navigationStore.popToTop()
       self.navigationStore.replace({ routeName: 'AuthHome' })
     },
+    changeToShopMode: flow(function* () {
+      const shopMode = yield getLocalItem(SHOP_MODE)
+      if (!shopMode) {
+        yield saveLocalItem(SHOP_MODE, true)
+        self.logout()
+      }
+    }),
   }))

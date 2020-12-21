@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 export const TOKEN = 'token'
 export const WATERMARK = 'watermark'
+export const SHOP_MODE = 'shop_mode'
 
 export const getLocalItem = async key => {
   const itemStr = await AsyncStorage.getItem(key)
