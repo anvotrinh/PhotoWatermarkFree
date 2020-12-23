@@ -5,9 +5,9 @@ import { useStores } from '../models/root-store'
 import { Avatar, Icon } from '../components'
 
 const routeIcons = {
-  Print: {
-    pack: 'ionicons',
-    name: 'md-home',
+  Product: {
+    pack: 'entypo',
+    name: 'shop',
   },
   Camera: {
     pack: 'feather',

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 
+import i from './../i18n'
 import { Text } from './text'
 import { Icon } from './icon'
 import { Metrics, Colors } from '../theme'
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export const EmptyList = ({ description, isLoading }) => {
+export const EmptyList = ({ description = i.get('empty_list'), isLoading }) => {
   if (isLoading) {
     return null
   }

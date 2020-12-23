@@ -12,7 +12,8 @@ import Login from '../screens/login-screen'
 import Register from '../screens/register-screen'
 import ForgotPassword from '../screens/login-screen/forgot-password-screen'
 
-import AddChild from '../screens/child-screen/add-child-screen'
+import ListProduct from '../screens/product-screen/list-product'
+import AddProduct from '../screens/product-screen/add-product-screen'
 
 import Setting from '../screens/setting-screen'
 import ChangePassword from '../screens/setting-screen/change-password-screen'
@@ -39,7 +40,7 @@ const tabOptions = {
 
 const Home = createBottomTabNavigator(
   {
-    Print: Watermark,
+    Product: ListProduct,
     Camera: Setting,
     Setting,
   },
@@ -55,7 +56,7 @@ const StackNavigator = createStackNavigator(
     Login,
     ForgotPassword,
     Home,
-    AddChild,
+    AddProduct,
     ChangePassword,
   },
   {

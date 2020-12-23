@@ -36,7 +36,13 @@ const config = {
   Svg,
 }
 
-export const Icon = ({ name, pack, size = 30, color = Colors.basic }) => {
+export const Icon = ({
+  name,
+  pack,
+  size = 30,
+  color = Colors.basic,
+  ...otherProps
+}) => {
   const camelCasePack = _.camelCase(pack)
   const className =
     camelCasePack.charAt(0).toUpperCase() + camelCasePack.substring(1)
@@ -48,5 +54,6 @@ export const Icon = ({ name, pack, size = 30, color = Colors.basic }) => {
     name,
     size,
     color,
+    ...otherProps,
   })
 }

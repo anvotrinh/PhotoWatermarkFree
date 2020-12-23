@@ -3,7 +3,7 @@ import { types, getSnapshot, applySnapshot } from 'mobx-state-tree'
 import { AuthStoreModel } from '../auth-store'
 import { UserStoreModel } from '../user-store'
 import { NavigationStoreModel } from '../navigation-store'
-import { ChildStoreModel } from '../child-store'
+import { ProductStoreModel } from '../product-store'
 import { WatermarkStoreModel } from '../watermark-store'
 
 export const RootStoreModel = types
@@ -12,7 +12,7 @@ export const RootStoreModel = types
     navigationStore: types.optional(NavigationStoreModel, {}),
     authStore: types.optional(AuthStoreModel, {}),
     userStore: types.optional(UserStoreModel, {}),
-    childStore: types.optional(ChildStoreModel, {}),
+    productStore: types.optional(ProductStoreModel, {}),
     watermarkStore: types.optional(WatermarkStoreModel, {}),
   })
   .actions(self => {

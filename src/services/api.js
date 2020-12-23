@@ -10,10 +10,7 @@ export const URLS = {
   Me: '/api/v1/me',
   ResendVerifyEmail: '/api/v1/resendVerifyEmail',
   Image: '/api/v1/image',
-  Child: '/api/v1/child',
-  Tag: '/api/v1/tag',
-  Tags: '/api/v1/tags',
-  Print: '/api/v1/print',
+  Product: '/api/v1/product',
 }
 
 const _fetchTimeout = (url, options) => {
