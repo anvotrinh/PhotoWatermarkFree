@@ -133,7 +133,7 @@ android {
         applicationId "com.photowatermarkfree"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 19
+        versionCode 18
         versionName "20.11.08"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
