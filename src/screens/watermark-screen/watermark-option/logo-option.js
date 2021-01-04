@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 
 export default observer(({ mode, setMode, setErrorMessage }) => {
   const {
-    watermarkStore: { logo, title, updateData },
+    watermarkStore: { logo, title, code, updateData },
     authStore: { changeToShopMode },
   } = useStores()
 
@@ -111,6 +111,13 @@ export default observer(({ mode, setMode, setErrorMessage }) => {
               placeholder={i.get('title_placeholder')}
             />
           </FormRow>
+          <FormRow label={i.get('code')} labelStyle={styles.prefixTextLabel}>
+            <Input
+              value={code}
+              onChangeText={code => updateData({ code })}
+              placeholder={i.get('code_placeholder')}
+            />
+          </FormRow>
           <View style={styles.logoTitleWrapper}>
             <Icon name='md-image' size={25} />
             <Text style={styles.logoImageLabel}>{i.get('logo_label')}</Text>
@@ -136,7 +143,7 @@ export default observer(({ mode, setMode, setErrorMessage }) => {
         <Button
           text={i.get('submit')}
           onPress={handleLogoBase64Submit}
-          onLongPress={changeToShopMode}
+          // onLongPress={changeToShopMode} FIXME
           style={styles.btnLogoBase64Submit}
         />
       </Modal>

@@ -37,8 +37,11 @@ const viDictionary = {
   current_password_placeholder: 'Nhập mật khẩu hiện tại',
   current_password_required: 'Thiếu mật khẩu hiện tại',
 
-  title: 'Title',
-  title_placeholder: 'Input title',
+  title: 'Chữ',
+  title_placeholder: 'Nhập chữ',
+
+  code: 'Mã số',
+  code_placeholder: 'Nhập mã số',
   // Login
   login: 'Đăng Nhập',
   forgot_password: 'Quên mật khẩu',
@@ -116,6 +119,9 @@ const enDictionary = {
 
   title: 'Title',
   title_placeholder: 'Input title',
+
+  code: 'Code',
+  code_placeholder: 'Input code',
   // Login
   login: 'Login',
   dont_have_account: "Don't have account? ",

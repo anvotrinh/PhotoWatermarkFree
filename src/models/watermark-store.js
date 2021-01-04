@@ -7,6 +7,7 @@ export const WatermarkStoreModel = types
   .model('WatermarkStore', {
     logo: logoBase64,
     title: 'Your text',
+    code: 'MS: 001',
     orderPrefix: 'Photo',
     imgUris: types.optional(types.array(types.string), []),
     xPercent: 0,
@@ -31,15 +32,17 @@ export const WatermarkStoreModel = types
     loadData: flow(function* () {
       const data = yield getLocalItem(WATERMARK)
       if (!data) return
-      const { logo, title, orderPrefix } = data
+      const { logo, title, code, orderPrefix } = data
       self.logo = logo
       self.title = title
+      self.code = code
       self.orderPrefix = orderPrefix
     }),
     saveData: flow(function* () {
       const data = {
         logo: self.logo,
         title: self.title,
+        code: self.code,
         orderPrefix: self.orderPrefix,
       }
       yield saveLocalItem(WATERMARK, data)

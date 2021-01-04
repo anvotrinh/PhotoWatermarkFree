@@ -32,7 +32,15 @@ const styles = StyleSheet.create({
 
 export default observer(({ onSuccess }) => {
   const {
-    watermarkStore: { imgUris, logo, title, xPercent, yPercent, fontSize },
+    watermarkStore: {
+      imgUris,
+      logo,
+      title,
+      code,
+      xPercent,
+      yPercent,
+      fontSize,
+    },
   } = useStores()
 
   const webViewRef = useRef()
@@ -58,7 +66,7 @@ export default observer(({ onSuccess }) => {
     const imgBase64 = await RNFS.readFile(imgUri, 'base64')
     webViewRef.current.injectJavaScript(
       `(function() {
-        editImage('${imgBase64}', '${imgText}', ${xPercent}, ${yPercent}, ${fontSize});
+        editImage('${imgBase64}', '${imgText}', '${code}', ${xPercent}, ${yPercent}, ${fontSize});
       })();`,
     )
   }

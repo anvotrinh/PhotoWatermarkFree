@@ -1,4 +1,5 @@
 import { Colors } from '../../../theme'
+import { CODE_X_PERCENT, CODE_Y_PERCENT } from './config'
 
 export default logoBase64 => `<!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@ export default logoBase64 => `<!DOCTYPE html>
 <canvas id="canvas"></canvas>
 <img id="logo" style="display: none;" src="${logoBase64}" />
 <script>
-  function editImage(base64, text, xPercent, yPercent, inputFontSize) {
+  function editImage(base64, text, code, xPercent, yPercent, inputFontSize) {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
 
@@ -36,6 +37,11 @@ export default logoBase64 => `<!DOCTYPE html>
       ctx.fillStyle = "${Colors.brilliantRose}";
       var textWidth = ctx.measureText(text).width;
       ctx.fillText(text, left + padding + (logoWidth - textWidth) / 2, top + padding + fontSize * 1.15 + logoHeight);
+
+      ctx.font = "bold " + fontSize + "px Arial";
+      ctx.fillStyle = "${Colors.brilliantRose}";
+      var measureCode = ctx.measureText(code)
+      ctx.fillText(code, canvas.width * (1 - ${CODE_X_PERCENT}) - measureCode.width, canvas.height * (1 - ${CODE_Y_PERCENT}));
 
       window.ReactNativeWebView.postMessage(canvas.toDataURL())
     };
