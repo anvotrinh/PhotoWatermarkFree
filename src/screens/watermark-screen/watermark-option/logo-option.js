@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 export default observer(({ mode, setMode, setErrorMessage }) => {
   const {
     watermarkStore: { logo, title, code, updateData },
-    authStore: { changeToShopMode },
+    // authStore: { changeToShopMode }, UPDATE ME
   } = useStores()
 
   const [logoBase64Url, setLogoBase64Url] = useState('')
@@ -143,7 +143,7 @@ export default observer(({ mode, setMode, setErrorMessage }) => {
         <Button
           text={i.get('submit')}
           onPress={handleLogoBase64Submit}
-          // onLongPress={changeToShopMode} FIXME
+          // onLongPress={changeToShopMode} UPDATE ME
           style={styles.btnLogoBase64Submit}
         />
       </Modal>
