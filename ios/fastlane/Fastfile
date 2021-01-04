@@ -5,7 +5,6 @@ before_all do
 end
 
 lane :internal do
-  changeEnv('staging')
   buildNumber = increaseBuildNumber
   build_app(
     workspace: "PhotoWatermarkFree.xcworkspace",
@@ -16,7 +15,6 @@ lane :internal do
 end
 
 lane :release do
-  changeEnv('production')
   buildNumber = increaseBuildNumber
   build_app(
     workspace: "PhotoWatermarkFree.xcworkspace",
@@ -32,7 +30,6 @@ lane :release do
     },
     submit_for_review: true
   )
-  changeEnv('staging')
 end
 
 def increaseBuildNumber()
@@ -63,21 +60,11 @@ def notifySlack(buildNumber)
     xcodeproj: "PhotoWatermarkFree.xcodeproj",
     target: "PhotoWatermarkFree"
   )
-  message = "New internal version #{versionNumber} (#{buildNumber}) of Park Smart IOS has been deployed successfully. Please update in Testflight"
+  message = "New internal version #{versionNumber} (#{buildNumber}) of PhotoWatermarkFree IOS has been deployed successfully. Please update in Testflight"
   slack(
     message: message,
     slack_url: ENV['DEV_CHANNEL_SLACK_URL'],
     success: true,
     default_payloads: []
   )
-end
-
-def changeEnv(env)
-  f = File.new('../../.env', 'w')
-  apiUrl = "#{env.upcase}_API_URL"
-  content = "API_URL=#{ENV[apiUrl]}
-ENVIRONMENT=#{env}
-ENABLE_REDUX_LOGGER=#{env == 'production' ? 'false' : 'true'}"
-  f.write(content)
-  f.close
 end

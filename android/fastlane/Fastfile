@@ -5,7 +5,6 @@ before_all do
 end
 
 lane :internal do
-  changeEnv('staging')
   versionName, versionCode = increaseVersionCode
   gradle(task: 'clean')
   gradle(task: 'bundle', build_type: 'Release')
@@ -17,7 +16,6 @@ lane :internal do
 end
 
 lane :release do
-  changeEnv('production')
   versionName, versionCode = increaseVersionCode
   gradle(task: 'clean')
   gradle(task: 'bundle', build_type: 'Release')
@@ -25,7 +23,6 @@ lane :release do
     track: 'production',
     skip_upload_apk: true
   )
-  changeEnv('staging')
 end
 
 def increaseVersionCode()
@@ -62,21 +59,11 @@ def increaseVersionCode()
 end
 
 def notifySlack(versionName, versionCode)
-  message = "New internal version #{versionName} (#{versionCode}) of Park Smart Android has been deployed successfully. Please download it <https://play.google.com/store/apps/details?id=com.psad_mobile|here>"
+  message = "New internal version #{versionName} (#{versionCode}) of PhotoWaterMarkFree Android has been deployed successfully."
   slack(
     message: message,
     slack_url: ENV['DEV_CHANNEL_SLACK_URL'],
     success: true,
     default_payloads: []
   )
-end
-
-def changeEnv(env)
-  f = File.new('../../.env', 'w')
-  apiUrl = "#{env.upcase}_API_URL"
-  content = "API_URL=#{ENV[apiUrl]}
-ENVIRONMENT=#{env}
-ENABLE_REDUX_LOGGER=#{env == 'production' ? 'false' : 'true'}"
-  f.write(content)
-  f.close
 end
