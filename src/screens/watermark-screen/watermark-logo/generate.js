@@ -37,6 +37,7 @@ export default observer(({ onSuccess }) => {
       logo,
       title,
       code,
+      codeLoc,
       xPercent,
       yPercent,
       fontSize,
@@ -66,7 +67,7 @@ export default observer(({ onSuccess }) => {
     const imgBase64 = await RNFS.readFile(imgUri, 'base64')
     webViewRef.current.injectJavaScript(
       `(function() {
-        editImage('${imgBase64}', '${imgText}', '${code}', ${xPercent}, ${yPercent}, ${fontSize});
+        editImage('${imgBase64}', '${imgText}', '${code}', '${codeLoc}', ${xPercent}, ${yPercent}, ${fontSize});
       })();`,
     )
   }

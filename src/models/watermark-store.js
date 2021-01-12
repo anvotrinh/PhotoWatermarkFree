@@ -8,6 +8,7 @@ export const WatermarkStoreModel = types
     logo: logoBase64,
     title: 'Your text',
     code: 'MS: 001',
+    codeLoc: 'bottom_right',
     orderPrefix: 'Photo',
     imgUris: types.optional(types.array(types.string), []),
     xPercent: 0,

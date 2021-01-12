@@ -1,5 +1,5 @@
 import { Colors } from '../../../theme'
-import { CODE_X_PERCENT, CODE_Y_PERCENT } from './config'
+import { CODE_X_MARGIN_PERCENT, CODE_Y_MARGIN_PERCENT } from './utils'
 
 export default logoBase64 => `<!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ export default logoBase64 => `<!DOCTYPE html>
 <canvas id="canvas"></canvas>
 <img id="logo" style="display: none;" src="${logoBase64}" />
 <script>
-  function editImage(base64, text, code, xPercent, yPercent, inputFontSize) {
+  function editImage(base64, text, code, codeLoc, xPercent, yPercent, inputFontSize) {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
 
@@ -40,8 +40,28 @@ export default logoBase64 => `<!DOCTYPE html>
 
       ctx.font = "bold " + fontSize + "px Arial";
       ctx.fillStyle = "${Colors.brilliantRose}";
-      var measureCode = ctx.measureText(code)
-      ctx.fillText(code, canvas.width * (1 - ${CODE_X_PERCENT}) - measureCode.width, canvas.height * (1 - ${CODE_Y_PERCENT}));
+      var measureCode = ctx.measureText(code);
+      var codeX = 0;
+      var codeY = 0;
+      switch (codeLoc) {
+        case 'top_left':
+          codeX = canvas.width * ${CODE_X_MARGIN_PERCENT};
+          codeY = canvas.height * ${CODE_Y_MARGIN_PERCENT} + fontSize * 0.75;
+          break;
+        case 'top_right':
+          codeX = canvas.width * (1 - ${CODE_X_MARGIN_PERCENT}) - measureCode.width;
+          codeY = canvas.height * ${CODE_Y_MARGIN_PERCENT} + fontSize * 0.75;
+          break;
+        case 'bottom_left':
+          codeX = canvas.width * ${CODE_X_MARGIN_PERCENT};
+          codeY = canvas.height * (1 - ${CODE_Y_MARGIN_PERCENT});
+          break;
+        case 'bottom_right':
+          codeX = canvas.width * (1 - ${CODE_X_MARGIN_PERCENT}) - measureCode.width;
+          codeY = canvas.height * (1 - ${CODE_Y_MARGIN_PERCENT});
+          break;
+      }
+      ctx.fillText(code, codeX, codeY);
 
       window.ReactNativeWebView.postMessage(canvas.toDataURL())
     };

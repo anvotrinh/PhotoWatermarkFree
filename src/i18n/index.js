@@ -77,6 +77,11 @@ const viDictionary = {
   mark_by_order: 'Đánh số',
   prefix_text: 'Chữ phía trước',
   app_settings: ' PhotoWatermark Cài Đặt',
+  top_left: 'Trên Trái',
+  top_right: 'Trên Phải',
+  bottom_left: 'Dưới Trái',
+  bottom_right: 'Dưới Phải',
+  code_location: 'Vị trí của mã:',
 }
 
 const enDictionary = {
@@ -158,6 +163,11 @@ const enDictionary = {
   mark_by_order: 'Mark by order number',
   prefix_text: 'Prefix text',
   app_settings: ' PhotoWatermark Settings',
+  top_left: 'Top Left',
+  top_right: 'Top Right',
+  bottom_left: 'Bottom Left',
+  bottom_right: 'Bottom Right',
+  code_location: 'Code location:',
 }
 
 class I18n {

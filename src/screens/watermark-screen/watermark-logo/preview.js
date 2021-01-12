@@ -5,10 +5,10 @@ import FastImage from 'react-native-fast-image'
 
 import i from '../../../i18n'
 import { getResolutionAsync } from '../../../utils/image'
-import { Slider, Header, Layout, Text } from '../../../components'
+import { Slider, Header, Layout, Text, Button } from '../../../components'
 import { Colors, Metrics } from '../../../theme'
 import { useStores } from '../../../models/root-store'
-import { CODE_X_PERCENT, CODE_Y_PERCENT } from './config'
+import { getCodePos } from './utils'
 
 const styles = StyleSheet.create({
   code: {
@@ -16,6 +16,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Arial',
     fontWeight: 'bold',
     position: 'absolute',
+  },
+  codeLocLabel: {
+    marginLeft: Metrics.space.small,
+  },
+  codeLocWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: Metrics.space.xs,
   },
   imgContent: {
     flex: 1,
@@ -43,6 +51,7 @@ export default observer(({ onNext, onBack }) => {
       imgUris,
       title,
       code,
+      codeLoc,
       logo,
       xPercent,
       yPercent,
@@ -81,10 +90,7 @@ export default observer(({ onNext, onBack }) => {
       left: w * xPercent,
       top: h * yPercent,
     }
-    codePos = {
-      right: w * CODE_X_PERCENT,
-      bottom: h * CODE_Y_PERCENT,
-    }
+    codePos = getCodePos(w, h, codeLoc)
   } else {
     const w = Metrics.screenWidth
     const h = imageRatio === 0 ? 0 : Metrics.screenWidth / imageRatio
@@ -93,10 +99,7 @@ export default observer(({ onNext, onBack }) => {
       left: w * xPercent,
       top: h * yPercent,
     }
-    codePos = {
-      right: w * CODE_X_PERCENT,
-      bottom: h * CODE_Y_PERCENT,
-    }
+    codePos = getCodePos(w, h, codeLoc)
   }
   const logoStyle = { width: 5.3 * fontSize, height: 2 * fontSize }
 
@@ -124,6 +127,29 @@ export default observer(({ onNext, onBack }) => {
         minimumValue={10}
         maximumValue={50}
       />
+      <Text style={styles.codeLocLabel}>{i.get('code_location')}</Text>
+      <View style={styles.codeLocWrapper}>
+        <Button
+          text={i.get('top_left')}
+          onPress={() => updateData({ codeLoc: 'top_left' })}
+          status={codeLoc === 'top_left' ? 'primary' : 'info'}
+        />
+        <Button
+          text={i.get('top_right')}
+          onPress={() => updateData({ codeLoc: 'top_right' })}
+          status={codeLoc === 'top_right' ? 'primary' : 'info'}
+        />
+        <Button
+          text={i.get('bottom_left')}
+          onPress={() => updateData({ codeLoc: 'bottom_left' })}
+          status={codeLoc === 'bottom_left' ? 'primary' : 'info'}
+        />
+        <Button
+          text={i.get('bottom_right')}
+          onPress={() => updateData({ codeLoc: 'bottom_right' })}
+          status={codeLoc === 'bottom_right' ? 'primary' : 'info'}
+        />
+      </View>
       <View style={styles.imgWrapper} onLayout={handleImageOnLayout}>
         <View style={styles.imgContent}>
           <FastImage style={imageStyle} source={{ uri: imgUri }}>
