@@ -36,7 +36,7 @@ export default observer(({ setScreen }) => {
     watermarkStore: { loadData, updateData },
   } = useStores()
 
-  const [mode, setMode] = useState('order')
+  const [mode, setMode] = useState('logo')
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {

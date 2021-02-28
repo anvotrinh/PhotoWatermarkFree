@@ -32,12 +32,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
-  logoTitle: {
-    color: Colors.brilliantRose,
-    fontFamily: 'Arial',
-    fontWeight: 'bold',
-    marginTop: Metrics.space.xs,
-  },
   logoWrapper: {
     alignItems: 'center',
     padding: 3,
@@ -101,7 +95,7 @@ export default observer(({ onNext, onBack }) => {
     }
     codePos = getCodePos(w, h, codeLoc)
   }
-  const logoStyle = { width: 5.3 * fontSize, height: 2 * fontSize }
+  const logoStyle = { width: 15.33 * fontSize, height: 1.35 * fontSize }
 
   return (
     <Layout>
@@ -153,10 +147,11 @@ export default observer(({ onNext, onBack }) => {
       <View style={styles.imgWrapper} onLayout={handleImageOnLayout}>
         <View style={styles.imgContent}>
           <FastImage style={imageStyle} source={{ uri: imgUri }}>
-            <Text style={[styles.code, codePos, { fontSize }]}>{code}</Text>
+            <Text
+              style={[styles.code, codePos, { fontSize }]}
+            >{`${code}\n${title}`}</Text>
             <View style={[styles.logoWrapper, logoPos]}>
               <FastImage source={{ uri: logo }} style={logoStyle} />
-              <Text style={[styles.logoTitle, { fontSize }]}>{title}</Text>
             </View>
           </FastImage>
         </View>

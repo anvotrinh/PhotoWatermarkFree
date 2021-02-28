@@ -29,39 +29,46 @@ export default logoBase64 => `<!DOCTYPE html>
       ctx.drawImage(image, 0, 0);
 
       var logo = document.getElementById("logo");
-      var logoWidth = 5.3 * fontSize;
-      var logoHeight = 2 * fontSize;
+      var logoWidth = 15.33 * fontSize;
+      var logoHeight = 1.35 * fontSize;
       ctx.drawImage(logo, left + padding, top + padding, logoWidth, logoHeight);
-      
-      ctx.font = "bold " + fontSize + "px Arial";
-      ctx.fillStyle = "${Colors.brilliantRose}";
-      var textWidth = ctx.measureText(text).width;
-      ctx.fillText(text, left + padding + (logoWidth - textWidth) / 2, top + padding + fontSize * 1.15 + logoHeight);
 
       ctx.font = "bold " + fontSize + "px Arial";
       ctx.fillStyle = "${Colors.brilliantRose}";
-      var measureCode = ctx.measureText(code);
+      var codeWidth = ctx.measureText(code).width;
+      var textWidth = ctx.measureText(text).width;
       var codeX = 0;
       var codeY = 0;
+      var textX = 0;
+      var textY = 0;
       switch (codeLoc) {
         case 'top_left':
           codeX = canvas.width * ${CODE_X_MARGIN_PERCENT};
           codeY = canvas.height * ${CODE_Y_MARGIN_PERCENT} + fontSize * 0.75;
+          textX = codeX;
+          textY = codeY + fontSize;
           break;
         case 'top_right':
-          codeX = canvas.width * (1 - ${CODE_X_MARGIN_PERCENT}) - measureCode.width;
+          codeX = canvas.width * (1 - ${CODE_X_MARGIN_PERCENT}) - codeWidth;
           codeY = canvas.height * ${CODE_Y_MARGIN_PERCENT} + fontSize * 0.75;
+          textX = codeX + codeWidth - textWidth;
+          textY = codeY + fontSize;
           break;
         case 'bottom_left':
           codeX = canvas.width * ${CODE_X_MARGIN_PERCENT};
-          codeY = canvas.height * (1 - ${CODE_Y_MARGIN_PERCENT});
+          codeY = canvas.height * (1 - ${CODE_Y_MARGIN_PERCENT}) - fontSize;
+          textX = codeX;
+          textY = codeY + fontSize;
           break;
         case 'bottom_right':
-          codeX = canvas.width * (1 - ${CODE_X_MARGIN_PERCENT}) - measureCode.width;
-          codeY = canvas.height * (1 - ${CODE_Y_MARGIN_PERCENT});
+          codeX = canvas.width * (1 - ${CODE_X_MARGIN_PERCENT}) - codeWidth;
+          codeY = canvas.height * (1 - ${CODE_Y_MARGIN_PERCENT}) - fontSize;
+          textX = codeX + codeWidth - textWidth;
+          textY = codeY + fontSize;
           break;
       }
       ctx.fillText(code, codeX, codeY);
+      ctx.fillText(text, textX, textY);
 
       window.ReactNativeWebView.postMessage(canvas.toDataURL())
     };

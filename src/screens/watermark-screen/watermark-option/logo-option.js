@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Metrics.space.small,
   },
   logo: {
-    aspectRatio: 2.65,
+    aspectRatio: 11.35,
     borderWidth: 1,
     marginTop: Metrics.space.small,
     resizeMode: 'stretch',

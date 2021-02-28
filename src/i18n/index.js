@@ -71,7 +71,7 @@ const viDictionary = {
   need_permission: 'Cần quyền truy cập',
   need_permission_message: 'Hãy cho phép ứng dụng quyền truy cập hình ảnh.',
   mark_by_logo: 'Gán logo',
-  logo_label: 'Hình Logo (tỉ lệ 2.65 : 1):',
+  logo_label: 'Hình Logo (tỉ lệ 11.35 : 1):',
   choose_other_logo: ' Chọn hình logo khác',
   logo_base64_url_placeholder: 'json URL với format { base64: ... }',
   mark_by_order: 'Đánh số',
@@ -157,7 +157,7 @@ const enDictionary = {
   need_permission_message:
     'Please grant Photo permission to use PhotoWatermark.',
   mark_by_logo: 'Mark by logo',
-  logo_label: 'Logo Image (ratio 2.65 : 1):',
+  logo_label: 'Logo Image (ratio 11.35 : 1):',
   choose_other_logo: ' Choose Other Logo',
   logo_base64_url_placeholder: 'json URL with format { base64: ... }',
   mark_by_order: 'Mark by order number',

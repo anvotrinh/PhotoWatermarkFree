@@ -14,6 +14,7 @@ export function getCodePos(w, h, codeLoc) {
       return {
         top: marginX,
         right: marginY,
+        textAlign: 'right',
       }
     case 'bottom_left':
       return {
@@ -24,6 +25,7 @@ export function getCodePos(w, h, codeLoc) {
       return {
         bottom: marginX,
         right: marginY,
+        textAlign: 'right',
       }
     default:
       return [0, 0]
