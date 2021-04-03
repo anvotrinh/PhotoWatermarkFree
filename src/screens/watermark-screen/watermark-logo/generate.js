@@ -11,7 +11,7 @@ import htmlRenderer from './generate-html'
 import { generateTempPath } from '../../../utils/file'
 import { Header, Modal, Button, Text, Layout } from '../../../components'
 import { useStores } from '../../../models/root-store'
-import { Colors } from '../../../theme'
+import { Colors, Metrics } from '../../../theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -67,7 +67,9 @@ export default observer(({ onSuccess }) => {
     const imgBase64 = await RNFS.readFile(imgUri, 'base64')
     webViewRef.current.injectJavaScript(
       `(function() {
-        editImage('${imgBase64}', '${imgText}', '${code}', '${codeLoc}', ${xPercent}, ${yPercent}, ${fontSize});
+        editImage('${imgBase64}', '${imgText}', '${code}', '${codeLoc}', ${xPercent}, ${yPercent}, ${(
+        fontSize / Metrics.screenWidth
+      ).toFixed(3)});
       })();`,
     )
   }

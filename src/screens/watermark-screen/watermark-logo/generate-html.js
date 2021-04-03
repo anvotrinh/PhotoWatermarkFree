@@ -23,7 +23,7 @@ export default logoBase64 => `<!DOCTYPE html>
 
       var left = canvas.width * xPercent
       var top = canvas.height * yPercent
-      var fontSize = canvas.height * inputFontSize / 550
+      var fontSize = canvas.width * inputFontSize
       var padding = canvas.height * 0.01
       
       ctx.drawImage(image, 0, 0);
