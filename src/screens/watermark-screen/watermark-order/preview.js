@@ -42,7 +42,7 @@ export default observer(({ onBack, onNext }) => {
     },
   } = useStores()
   const imgUri = imgUris[0]
-  const sampleText = `${orderPrefix} 1`
+  const sampleText = `${orderPrefix}`
 
   const [imageRatio, setImageRatio] = useState(0)
   const [imageWrapperHeight, setImageWrapperHeight] = useState(0)

@@ -51,7 +51,7 @@ export default observer(({ onSuccess }) => {
 
   const editImage = async () => {
     const imgUri = imgUris[imgIndex]
-    const imgText = `${orderPrefix} ${imgIndex + 1}`
+    const imgText = `${orderPrefix}`
     const imgBase64 = await RNFS.readFile(imgUri, 'base64')
     webViewRef.current.injectJavaScript(
       `(function() {
